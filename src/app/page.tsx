@@ -1,0 +1,330 @@
+"use client";
+
+import Image from "next/image";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  Check,
+  Menu,
+  Sparkles,
+  UserRound,
+  X,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const navigation = [
+  ["Soluções", "#solucoes"],
+  ["Como funciona", "#metodo"],
+  ["Tecnologia", "#tecnologia"],
+  ["A Assentin", "#assentin"],
+];
+
+const journey = [
+  {
+    number: "01",
+    title: "Entender",
+    text: "Uma leitura precisa do seu momento, das suas prioridades e das decisões que pedem atenção.",
+  },
+  {
+    number: "02",
+    title: "Estruturar",
+    text: "Um plano claro conecta objetivos, organiza recursos e transforma complexidade em próximos passos.",
+  },
+  {
+    number: "03",
+    title: "Evoluir",
+    text: "Acompanhamento recorrente para ajustar a rota e sustentar decisões melhores ao longo do tempo.",
+  },
+];
+
+export default function Home() {
+  const root = useRef<HTMLElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", menuOpen);
+    return () => document.body.classList.remove("menu-open");
+  }, [menuOpen]);
+
+  useGSAP(
+    () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) return;
+
+      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+      intro
+        .from(".nav-shell", { y: -24, opacity: 0, duration: 0.7 })
+        .from(".hero-kicker", { y: 20, opacity: 0, duration: 0.55 }, "-=0.2")
+        .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.08 }, "-=0.25")
+        .from(".hero-copy", { y: 24, opacity: 0, duration: 0.65 }, "-=0.4")
+        .from(".hero-actions", { y: 18, opacity: 0, duration: 0.55 }, "-=0.4")
+        .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.08, opacity: 0, duration: 1.1 }, "-=0.85")
+        .from(".hero-index", { x: 18, opacity: 0, duration: 0.6 }, "-=0.45");
+
+      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+        gsap.from(element, {
+          y: 44,
+          opacity: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: { trigger: element, start: "top 84%", once: true },
+        });
+      });
+
+      gsap.to(".ascent-progress", {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".journey-grid",
+          start: "top 72%",
+          end: "bottom 58%",
+          scrub: 0.5,
+        },
+      });
+
+      gsap.to(".brand-image img", {
+        yPercent: 8,
+        ease: "none",
+        scrollTrigger: { trigger: ".brand-image", start: "top bottom", end: "bottom top", scrub: 0.8 },
+      });
+
+      return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    },
+    { scope: root },
+  );
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    <main ref={root}>
+      <header className="nav-shell" aria-label="Navegação principal">
+        <a className="brand" href="#inicio" aria-label="Assentin, início">
+          <Image src="/brand/logo-dark.png" alt="Assentin Consultoria Financeira" width={260} height={90} priority />
+        </a>
+
+        <nav className="desktop-nav">
+          {navigation.map(([label, href]) => (
+            <a key={href} href={href}>{label}</a>
+          ))}
+        </nav>
+
+        <a className="nav-cta" href="#contato">
+          Fale com um especialista <ArrowUpRight size={16} strokeWidth={1.8} />
+        </a>
+
+        <button className="menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen}>
+          {menuOpen ? <X /> : <Menu />}
+        </button>
+
+        <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
+          {navigation.map(([label, href], index) => (
+            <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+              <span>0{index + 1}</span>{label}
+            </a>
+          ))}
+          <a className="mobile-cta" href="#contato" onClick={() => setMenuOpen(false)}>Fale com um especialista <ArrowUpRight /></a>
+        </div>
+      </header>
+
+      <section className="hero" id="inicio">
+        <div className="hero-grid page-shell">
+          <div className="hero-content">
+            <p className="eyebrow hero-kicker"><span className="eyebrow-dot" /> Consultoria financeira para pessoas e empresas</p>
+            <h1 className="hero-title" aria-label="Inteligência financeira para transformar decisões em patrimônio">
+              <span className="hero-line"><span>Inteligência financeira</span></span>
+              <span className="hero-line"><span>para transformar</span></span>
+              <span className="hero-line accent-line"><span>decisões em patrimônio.</span></span>
+            </h1>
+            <p className="hero-copy">Planejamento, estratégia e acompanhamento para construir um futuro financeiro com mais clareza, segurança e liberdade.</p>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#contato">Fale com um especialista <ArrowUpRight size={18} /></a>
+              <a className="text-link" href="#solucoes">Conheça as soluções <ArrowDown size={16} /></a>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+            <Image src="/brand/office-brand.jpg" alt="Ambiente executivo com a identidade Assentin" fill sizes="(max-width: 900px) 100vw, 50vw" priority />
+            <div className="hero-shade" />
+            <div className="hero-index">
+              <span>01</span>
+              <p>Estratégia que organiza o presente e constrói o próximo passo.</p>
+            </div>
+            <div className="hero-monogram" aria-hidden="true"><i /><i /><i /></div>
+          </div>
+        </div>
+        <div className="principles" aria-label="Princípios Assentin">
+          <div className="principles-track">
+            <span>Confiança</span><i />
+            <span>Experiência</span><i />
+            <span>Suporte</span><i />
+            <span>Estratégia</span><i />
+            <span>Evolução</span><i />
+          </div>
+        </div>
+      </section>
+
+      <section className="solutions section-light" id="solucoes">
+        <div className="page-shell">
+          <div className="section-heading" data-reveal>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Soluções por perfil</p>
+            <h2>Estratégia financeira feita para a sua realidade.</h2>
+            <p>Necessidades diferentes pedem leituras diferentes. A mesma clareza para conduzir a vida financeira ou apoiar as decisões de um negócio.</p>
+          </div>
+
+          <div className="solution-grid">
+            <article className="solution-card solution-personal" data-reveal>
+              <div className="card-topline"><span>01 / PESSOAS</span><UserRound size={22} strokeWidth={1.5} /></div>
+              <div>
+                <h3>Para você</h3>
+                <p>Organize escolhas, prioridades e objetivos com um plano que acompanha a sua vida.</p>
+              </div>
+              <ul>
+                <li><Check size={15} /> Organização e diagnóstico financeiro</li>
+                <li><Check size={15} /> Planejamento de objetivos e prioridades</li>
+                <li><Check size={15} /> Acompanhamento recorrente da evolução</li>
+              </ul>
+              <a href="#contato">Entenda a solução <ArrowUpRight size={18} /></a>
+            </article>
+
+            <article className="solution-card solution-business" data-reveal>
+              <div className="card-topline"><span>02 / EMPRESAS</span><Building2 size={22} strokeWidth={1.5} /></div>
+              <div>
+                <h3>Para empresas</h3>
+                <p>Transforme dados financeiros em uma base mais segura para gerir, decidir e crescer.</p>
+              </div>
+              <ul>
+                <li><Check size={15} /> Gestão financeira e fluxo de caixa</li>
+                <li><Check size={15} /> DRE e indicadores gerenciais</li>
+                <li><Check size={15} /> Apoio estratégico à tomada de decisão</li>
+              </ul>
+              <a href="#contato">Conheça a frente empresarial <ArrowUpRight size={18} /></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="method section-dark" id="metodo">
+        <div className="page-shell method-layout">
+          <div className="method-intro" data-reveal>
+            <p className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" /> O jeito Assentin</p>
+            <h2>Clareza para decidir.<br />Consistência para evoluir.</h2>
+            <p>O futuro financeiro é construído em movimento. Nosso trabalho conecta leitura, estrutura e acompanhamento em uma jornada contínua.</p>
+          </div>
+
+          <div className="journey-grid">
+            <div className="ascent-rail" aria-hidden="true"><span className="ascent-progress" /></div>
+            {journey.map((item) => (
+              <article className="journey-step" key={item.number} data-reveal>
+                <span>{item.number}</span>
+                <div><h3>{item.title}</h3><p>{item.text}</p></div>
+                <ArrowUpRight size={24} strokeWidth={1.35} />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="technology" id="tecnologia">
+        <div className="page-shell tech-layout">
+          <div className="tech-copy" data-reveal>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Tecnologia Assentin</p>
+            <h2>Visão integrada para acompanhar o que importa.</h2>
+            <p>A tecnologia faz parte da experiência: informação organizada, acompanhamento mais próximo e decisões com contexto.</p>
+            <div className="tech-note"><Sparkles size={18} /><span>Um ecossistema pensado para unir inteligência humana e recursos digitais.</span></div>
+            <a className="text-link dark-link" href="#contato">Conheça o ecossistema <ArrowRight size={17} /></a>
+          </div>
+
+          <div className="dashboard-frame" data-reveal aria-label="Representação visual do ecossistema digital Assentin">
+            <div className="dashboard-glow" />
+            <div className="dashboard-window">
+              <div className="dashboard-header">
+                <Image src="/brand/logo-dark.png" alt="Assentin" width={150} height={52} />
+                <span>Visão geral <i /></span>
+              </div>
+              <div className="dashboard-body">
+                <aside><span className="active" /><span /><span /><span /></aside>
+                <div className="dashboard-content">
+                  <div className="dashboard-title"><div><small>Planejamento</small><strong>Sua evolução em perspectiva</strong></div><button aria-label="Mais opções">•••</button></div>
+                  <div className="dashboard-cards"><div><small>Organização</small><b>Em dia</b></div><div><small>Próximo objetivo</small><b>Em progresso</b></div><div><small>Acompanhamento</small><b>Ativo</b></div></div>
+                  <div className="dashboard-chart">
+                    <div className="chart-label"><span>Evolução planejada</span><small>visão ilustrativa</small></div>
+                    <svg viewBox="0 0 520 190" role="img" aria-label="Linha ascendente representando evolução">
+                      <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#376499" stopOpacity=".35"/><stop offset="1" stopColor="#376499" stopOpacity="0"/></linearGradient></defs>
+                      <path className="chart-area" d="M0 170 C80 164 78 138 143 136 S225 126 280 102 S356 96 400 58 S472 40 520 18 L520 190 L0 190Z" />
+                      <path className="chart-line" d="M0 170 C80 164 78 138 143 136 S225 126 280 102 S356 96 400 58 S472 40 520 18" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional section-light" id="assentin">
+        <div className="page-shell institutional-grid">
+          <div className="brand-image" data-reveal>
+            <Image src="/brand/brand-kit.jpg" alt="Kit institucional da Assentin" fill sizes="(max-width: 900px) 100vw, 48vw" />
+            <span>Identidade que traduz confiança, experiência e suporte.</span>
+          </div>
+          <div className="institutional-copy" data-reveal>
+            <p className="eyebrow"><span className="eyebrow-dot" /> A Assentin</p>
+            <h2>Uma empresa financeira preparada para crescer com você.</h2>
+            <p>A Assentin nasce para transformar planejamento em possibilidades e decisões em segurança. Uma atuação estruturada, próxima e orientada ao futuro.</p>
+            <div className="brand-principles"><span>Confiança</span><span>Experiência</span><span>Suporte</span></div>
+            <a className="text-link dark-link" href="#contato">Conheça nossa visão <ArrowRight size={17} /></a>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact section-dark" id="contato">
+        <div className="contact-mark" aria-hidden="true"><i /><i /></div>
+        <div className="page-shell contact-grid">
+          <div className="contact-copy" data-reveal>
+            <p className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" /> Próximo passo</p>
+            <h2>Seu futuro financeiro começa com uma boa conversa.</h2>
+            <p>Conte brevemente o que você busca. Um especialista Assentin ajuda a identificar o melhor caminho para o seu momento.</p>
+          </div>
+
+          {sent ? (
+            <div className="success-card" role="status" data-reveal>
+              <span><Check /></span>
+              <h3>Interesse registrado.</h3>
+              <p>Este protótipo demonstra a jornada de conversão. O envio será conectado ao canal comercial na etapa de integração.</p>
+              <button type="button" onClick={() => setSent(false)}>Voltar ao formulário</button>
+            </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit} data-reveal>
+              <div className="field-row">
+                <label><span>Nome</span><input name="name" type="text" placeholder="Como podemos chamar você?" required /></label>
+                <label><span>E-mail</span><input name="email" type="email" placeholder="seu@email.com" required /></label>
+              </div>
+              <label><span>Estou buscando</span><select name="profile" defaultValue="" required><option value="" disabled>Selecione uma opção</option><option>Planejamento para mim</option><option>Soluções para minha empresa</option><option>Conhecer o ecossistema Assentin</option></select></label>
+              <label><span>Mensagem <small>(opcional)</small></span><textarea name="message" rows={3} placeholder="Conte um pouco sobre o seu momento." /></label>
+              <div className="form-footer"><p>Ao continuar, você concorda com o uso dos dados para retorno do contato.</p><button className="button button-light" type="submit">Quero conversar <ArrowUpRight size={18} /></button></div>
+            </form>
+          )}
+        </div>
+      </section>
+
+      <footer>
+        <div className="page-shell footer-main">
+          <div className="footer-brand"><Image src="/brand/logo-dark.png" alt="Assentin Consultoria Financeira" width={230} height={80} /><p>Inteligência financeira para transformar decisões em patrimônio.</p></div>
+          <div className="footer-links"><div><span>Navegação</span>{navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><span>Soluções</span><a href="#solucoes">Para você</a><a href="#solucoes">Para empresas</a><a href="#tecnologia">Tecnologia</a></div></div>
+        </div>
+        <div className="page-shell footer-bottom"><span>© 2026 Assentin. Todos os direitos reservados.</span><div><a href="#">Privacidade</a><a href="#">Termos de uso</a></div></div>
+      </footer>
+    </main>
+  );
+}
