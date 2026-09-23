@@ -11,7 +11,9 @@ import {
   ArrowUpRight,
   Building2,
   Check,
+  ImageIcon,
   Menu,
+  MonitorUp,
   Sparkles,
   UserRound,
   X,
@@ -79,21 +81,17 @@ export default function Home() {
         });
       });
 
-      gsap.to(".ascent-progress", {
+      gsap.fromTo(".ascent-progress", {
+        scaleY: 0,
+      }, {
         scaleY: 1,
-        ease: "none",
+        duration: 1.2,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".journey-grid",
-          start: "top 72%",
-          end: "bottom 58%",
-          scrub: 0.5,
+          start: "top 76%",
+          once: true,
         },
-      });
-
-      gsap.to(".brand-image img", {
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: { trigger: ".brand-image", start: "top bottom", end: "bottom top", scrub: 0.8 },
       });
 
       return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -154,11 +152,13 @@ export default function Home() {
           </div>
 
           <div className="hero-visual">
-            <Image src="/brand/office-brand.jpg" alt="Ambiente executivo com a identidade Assentin" fill sizes="(max-width: 900px) 100vw, 50vw" priority />
-            <div className="hero-shade" />
-            <div className="hero-index">
-              <span>01</span>
-              <p>Estratégia que organiza o presente e constrói o próximo passo.</p>
+            <div className="media-placeholder hero-media-placeholder" role="img" aria-label="Espaço reservado para a imagem principal da Assentin">
+              <div className="placeholder-grid" aria-hidden="true" />
+              <div className="placeholder-copy">
+                <span className="placeholder-icon"><ImageIcon size={20} strokeWidth={1.5} /></span>
+                <div><small>Imagem principal</small><strong>Placeholder da hero</strong><p>Formato recomendado: horizontal, 1920 × 1280 px</p></div>
+              </div>
+              <span className="placeholder-code">IMG / 01</span>
             </div>
             <div className="hero-monogram" aria-hidden="true"><i /><i /><i /></div>
           </div>
@@ -245,28 +245,14 @@ export default function Home() {
             <a className="text-link dark-link" href="#contato">Conheça o ecossistema <ArrowRight size={17} /></a>
           </div>
 
-          <div className="dashboard-frame" data-reveal aria-label="Representação visual do ecossistema digital Assentin">
-            <div className="dashboard-glow" />
-            <div className="dashboard-window">
-              <div className="dashboard-header">
-                <Image src="/brand/logo-dark.png" alt="Assentin" width={150} height={52} />
-                <span>Visão geral <i /></span>
+          <div className="integrated-visual" data-reveal>
+            <div className="media-placeholder integrated-placeholder" role="img" aria-label="Espaço reservado para a imagem da visão integrada Assentin">
+              <div className="placeholder-grid" aria-hidden="true" />
+              <div className="placeholder-copy">
+                <span className="placeholder-icon"><MonitorUp size={21} strokeWidth={1.5} /></span>
+                <div><small>Tecnologia Assentin</small><strong>Placeholder da visão integrada</strong><p>Formato recomendado: interface ou mockup horizontal, 1600 × 1100 px</p></div>
               </div>
-              <div className="dashboard-body">
-                <aside><span className="active" /><span /><span /><span /></aside>
-                <div className="dashboard-content">
-                  <div className="dashboard-title"><div><small>Planejamento</small><strong>Sua evolução em perspectiva</strong></div><button aria-label="Mais opções">•••</button></div>
-                  <div className="dashboard-cards"><div><small>Organização</small><b>Em dia</b></div><div><small>Próximo objetivo</small><b>Em progresso</b></div><div><small>Acompanhamento</small><b>Ativo</b></div></div>
-                  <div className="dashboard-chart">
-                    <div className="chart-label"><span>Evolução planejada</span><small>visão ilustrativa</small></div>
-                    <svg viewBox="0 0 520 190" role="img" aria-label="Linha ascendente representando evolução">
-                      <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#376499" stopOpacity=".35"/><stop offset="1" stopColor="#376499" stopOpacity="0"/></linearGradient></defs>
-                      <path className="chart-area" d="M0 170 C80 164 78 138 143 136 S225 126 280 102 S356 96 400 58 S472 40 520 18 L520 190 L0 190Z" />
-                      <path className="chart-line" d="M0 170 C80 164 78 138 143 136 S225 126 280 102 S356 96 400 58 S472 40 520 18" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+              <span className="placeholder-code">IMG / 02</span>
             </div>
           </div>
         </div>
@@ -275,7 +261,7 @@ export default function Home() {
       <section className="institutional section-light" id="assentin">
         <div className="page-shell institutional-grid">
           <div className="brand-image" data-reveal>
-            <Image src="/brand/brand-kit.jpg" alt="Kit institucional da Assentin" fill sizes="(max-width: 900px) 100vw, 48vw" />
+            <Image src="/brand/brand-kit.jpg" alt="Kit institucional da Assentin" fill sizes="(max-width: 900px) 100vw, 48vw" loading="eager" />
             <span>Identidade que traduz confiança, experiência e suporte.</span>
           </div>
           <div className="institutional-copy" data-reveal>
