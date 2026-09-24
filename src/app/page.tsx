@@ -115,7 +115,7 @@ export default function Home() {
       <BrandPreloader onComplete={handlePreloaderComplete} />
       <header className="nav-shell" aria-label="Navegação principal">
         <a className="brand" href="#inicio" aria-label="Assentin, início">
-          <Image src="/brand/logo-dark.png" alt="Assentin Consultoria Financeira" width={260} height={90} priority />
+          <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} priority />
         </a>
 
         <nav className="desktop-nav">
@@ -313,7 +313,7 @@ export default function Home() {
 
       <footer>
         <div className="page-shell footer-main">
-          <div className="footer-brand"><Image src="/brand/logo-dark.png" alt="Assentin Consultoria Financeira" width={230} height={80} /><p>Inteligência financeira para transformar decisões em patrimônio.</p></div>
+          <div className="footer-brand"><Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} /><p>Inteligência financeira para transformar decisões em patrimônio.</p></div>
           <div className="footer-links"><div><span>Navegação</span>{navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><span>Soluções</span><a href="#solucoes">Para você</a><a href="#solucoes">Para empresas</a><a href="#tecnologia">Tecnologia</a></div></div>
         </div>
         <div className="page-shell footer-bottom"><span>© 2026 Assentin. Todos os direitos reservados.</span><div><a href="#">Privacidade</a><a href="#">Termos de uso</a></div></div>
