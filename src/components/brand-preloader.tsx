@@ -57,38 +57,38 @@ export function BrandPreloader({ onComplete }: BrandPreloaderProps) {
       const glyphs = gsap.utils.toArray<HTMLElement>(".preloader-glyph");
 
       timeline
-        .from(
+        .to(
           ".preloader-guide-horizontal",
-          { scaleX: 0, duration: 0.48, stagger: 0.04, ease: "power3.out" },
+          { scaleX: 1, duration: 0.52, stagger: 0.05, ease: "power3.out" },
           0.04,
         )
-        .from(
+        .to(
           ".preloader-tick",
-          { scaleY: 0, opacity: 0, duration: 0.32, stagger: 0.028, ease: "power2.out" },
-          0.1,
+          { scaleY: 1, opacity: 1, duration: 0.36, stagger: 0.035, ease: "power2.out" },
+          0.12,
         )
-        .from(
+        .to(
           ".preloader-letter-outline",
-          { opacity: 0, duration: 0.3, stagger: 0.025, ease: "none" },
-          0.24,
+          { opacity: 1, duration: 0.34, stagger: 0.03, ease: "none" },
+          0.34,
         );
 
       glyphs.forEach((glyph, index) => {
         const fill = glyph.querySelector(".preloader-letter-fill");
-        const start = 0.56 + index * 0.145;
+        const start = 0.78 + index * 0.22;
 
         timeline.to(
           fill,
-          { clipPath: "inset(0 0% 0 0)", duration: 0.27, ease: "power2.inOut" },
+          { clipPath: "inset(0 0% 0 0)", duration: 0.32, ease: "power2.inOut" },
           start,
         );
       });
 
       timeline
-        .to(".preloader-letter-outline", { opacity: 0.09, duration: 0.2 }, 1.86)
-        .to(".preloader-construction", { scale: 1.012, duration: 0.34, ease: "power1.inOut" }, 1.88)
-        .call(signalReady, [], 1.94)
-        .to(root.current, { yPercent: -100, duration: 0.66, ease: "power4.inOut" }, 2.06);
+        .to(".preloader-letter-outline", { opacity: 0.35, duration: 0.2 }, 2.7)
+        .to(".preloader-construction", { scale: 1.012, duration: 0.38, ease: "power1.inOut" }, 2.72)
+        .call(signalReady, [], 2.9)
+        .to(root.current, { yPercent: -100, duration: 0.68, ease: "power4.inOut" }, 3.04);
     },
     { scope: root },
   );
