@@ -7,10 +7,34 @@ import gsap from "gsap";
 const letters = "assentin".split("");
 
 const palette = [
-  { name: "Patrimônio", code: "#072044" },
-  { name: "Estratégia", code: "#071C30" },
-  { name: "Ascensão", code: "#376499" },
-  { name: "Equilíbrio", code: "#EDF1F4" },
+  {
+    name: "Patrimônio",
+    code: "#072044",
+    description: "Azul profundo que transmite solidez, confiança e segurança.",
+    rgb: "07, 32, 68",
+    cmyk: "100, 88, 44, 48",
+  },
+  {
+    name: "Estratégia",
+    code: "#071C30",
+    description: "Azul quase preto, associado a profundidade, precisão e decisões conscientes.",
+    rgb: "07, 28, 48",
+    cmyk: "100, 84, 50, 65",
+  },
+  {
+    name: "Ascensão",
+    code: "#376499",
+    description: "Azul mais aberto que representa movimento, crescimento e evolução.",
+    rgb: "55, 100, 153",
+    cmyk: "84, 58, 17, 03",
+  },
+  {
+    name: "Equilíbrio",
+    code: "#EDF1F4",
+    description: "Tom claro e neutro que traz leveza, clareza e estabilidade.",
+    rgb: "237, 241, 244",
+    cmyk: "09, 04, 04, 00",
+  },
 ];
 
 type BrandPreloaderProps = {
@@ -58,7 +82,7 @@ export function BrandPreloader({ onComplete }: BrandPreloaderProps) {
           .set(".preloader-palette", { autoAlpha: 0 })
           .set(".preloader-blueprint", { opacity: 1 })
           .set(".preloader-letter-fill", { clipPath: "inset(0 0% 0 0)" })
-          .set(".preloader-measure, .preloader-axis-label", { autoAlpha: 0 })
+          .set(".preloader-measure, .preloader-axis", { autoAlpha: 0 })
           .call(signalReady, [], 0.08)
           .to(root.current, { opacity: 0, duration: 0.2, delay: 0.18, ease: "none" });
         return;
@@ -93,6 +117,11 @@ export function BrandPreloader({ onComplete }: BrandPreloaderProps) {
           ".preloader-letter-outline",
           { opacity: 0, duration: 0.22, stagger: 0.035, ease: "none" },
           0.48,
+        )
+        .from(
+          ".preloader-axis",
+          { opacity: 0, scaleY: 0.55, duration: 0.24, ease: "power2.out" },
+          0.62,
         );
 
       glyphs.forEach((glyph, index) => {
@@ -142,14 +171,24 @@ export function BrandPreloader({ onComplete }: BrandPreloaderProps) {
       <div className="preloader-palette" aria-hidden="true">
         {palette.map((color) => (
           <div className="preloader-palette-panel" key={color.name}>
-            <span>{color.name}</span>
-            <small>{color.code}</small>
+            <span className="preloader-palette-name">{color.name}</span>
+            <p className="preloader-palette-description">{color.description}</p>
+            <div className="preloader-palette-meta">
+              <span>HEX {color.code}</span>
+              <span>RGB {color.rgb}</span>
+              <span>CMYK {color.cmyk}</span>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="preloader-blueprint" aria-hidden="true">
-        <span className="preloader-axis-label">malha / construção 01</span>
+        <div className="preloader-axis">
+          <i className="preloader-axis-line" />
+          <i className="preloader-axis-cap preloader-axis-cap-top" />
+          <i className="preloader-axis-cap preloader-axis-cap-bottom" />
+          <span className="preloader-axis-label">x-height</span>
+        </div>
         <div className="preloader-guide-horizontal preloader-guide-top" />
         <div className="preloader-guide-horizontal preloader-guide-middle" />
         <div className="preloader-guide-horizontal preloader-guide-bottom" />
