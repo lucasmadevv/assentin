@@ -45,16 +45,28 @@ export function BrandPreloader({ onComplete }: BrandPreloaderProps) {
       const timeline = gsap.timeline({ onComplete: finish });
 
       gsap.set(".preloader-letter-fill", { clipPath: "inset(0 100% 0 0)" });
+      const glyphs = gsap.utils.toArray<HTMLElement>(".preloader-glyph");
 
       if (reducedMotion) {
         timeline
-          .set(".preloader-letter-fill", { clipPath: "inset(0 0% 0 0)" })
-          .call(signalReady, [], 0.04)
-          .to(root.current, { opacity: 0, duration: 0.2, delay: 0.12, ease: "none" });
+          .set(".preloader-guide-horizontal", { scaleX: 1 }, 0)
+          .set(".preloader-tick", { scaleY: 1, opacity: 1 }, 0)
+          .to(
+            ".preloader-letter-outline",
+            { opacity: 0.45, duration: 0.12, stagger: 0.02, ease: "none" },
+            0.02,
+          );
+
+        glyphs.forEach((glyph, index) => {
+          const fill = glyph.querySelector(".preloader-letter-fill");
+          timeline.set(fill, { clipPath: "inset(0 0% 0 0)" }, 0.24 + index * 0.14);
+        });
+
+        timeline
+          .call(signalReady, [], 1.5)
+          .to(root.current, { opacity: 0, duration: 0.22, ease: "none" }, 1.56);
         return;
       }
-
-      const glyphs = gsap.utils.toArray<HTMLElement>(".preloader-glyph");
 
       timeline
         .to(
