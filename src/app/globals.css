@@ -209,8 +209,8 @@ section[id] { scroll-margin-top: 88px; }
   align-items: center;
 }
 
-.brand { width: min(62vw, 220px); height: 58px; display: flex; align-items: center; overflow: hidden; }
-.brand img { width: 100%; height: auto; }
+.brand { width: 154px; height: 50px; display: flex; align-items: center; overflow: hidden; }
+.brand img { width: 148px; height: auto; }
 .desktop-nav, .nav-cta { display: none; }
 
 .menu-toggle {
@@ -431,7 +431,7 @@ section[id] { scroll-margin-top: 88px; }
 /* Footer */
 footer { background: var(--estrategia); color: white; }
 .footer-main { padding: 55px 0 50px; display: flex; flex-direction: column; gap: 50px; }
-.footer-brand img { width: min(100%, 288px); height: auto; }
+.footer-brand img { width: 190px; height: auto; }
 .footer-brand p { max-width: 360px; margin: 22px 0 0; color: rgba(255, 255, 255, 0.43); font-size: 0.875rem; line-height: 1.65; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 48px 64px; }
 .footer-links > div { min-width: 120px; display: grid; align-content: start; gap: 13px; }
@@ -469,8 +469,8 @@ footer { background: var(--estrategia); color: white; }
   html { scroll-padding-top: 108px; }
   section[id] { scroll-margin-top: 108px; }
   .nav-shell { top: 18px; width: min(1440px, calc(100vw - 40px)); height: 74px; padding: 0 14px 0 22px; }
-  .brand { width: 228px; }
-  .brand img { width: 220px; }
+  .brand { width: 174px; }
+  .brand img { width: 166px; }
   .menu-toggle, .mobile-menu { display: none !important; }
   .desktop-nav { margin-left: auto; display: flex; align-items: center; gap: 20px; }
   .desktop-nav a { color: rgba(255, 255, 255, 0.72); font-size: 0.8125rem; transition: color 0.2s ease; }
@@ -513,8 +513,6 @@ footer { background: var(--estrategia); color: white; }
 
 @media (min-width: 1181px) {
   :root { --page: min(1380px, calc(100vw - 96px)); }
-  .brand { width: 296px; }
-  .brand img { width: 288px; }
   .desktop-nav { gap: 34px; }
   .nav-cta { margin-left: 34px; padding-inline: 19px; }
   .hero-grid { grid-template-columns: minmax(0, 1.02fr) minmax(480px, 0.98fr); gap: clamp(48px, 5vw, 84px); }
