@@ -67,48 +67,67 @@ export default function Home() {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion) {
-        const intro = gsap.timeline({ defaults: { ease: "none" } });
-        intro
-          .from(".nav-shell", { opacity: 0, duration: 0.24 })
-          .from(".hero-kicker", { opacity: 0, duration: 0.2 }, "-=0.1")
-          .from(".hero-line > span", { opacity: 0, duration: 0.24, stagger: 0.06 }, "-=0.08")
-          .from(".hero-copy", { opacity: 0, duration: 0.2 }, "-=0.1")
-          .from(".hero-actions", { opacity: 0, duration: 0.2 }, "-=0.1")
-          .from(".hero-visual", { opacity: 0, duration: 0.28 }, "-=0.12")
-          .from(".hero-index", { opacity: 0, duration: 0.2 }, "-=0.1");
+        const introTargets = gsap.utils.toArray<HTMLElement>(
+          ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
+        );
+
+        gsap.fromTo(
+          introTargets,
+          { autoAlpha: 0 },
+          {
+            autoAlpha: 1,
+            duration: 0.2,
+            stagger: 0.035,
+            ease: "none",
+            clearProps: "opacity,visibility",
+          },
+        );
       } else {
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
-          .from(".nav-shell", { y: -24, opacity: 0, duration: 0.7 })
-          .from(".hero-kicker", { y: 20, opacity: 0, duration: 0.55 }, "-=0.2")
-          .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.08 }, "-=0.25")
-          .from(".hero-copy", { y: 24, opacity: 0, duration: 0.65 }, "-=0.4")
-          .from(".hero-actions", { y: 18, opacity: 0, duration: 0.55 }, "-=0.4")
-          .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.08, opacity: 0, duration: 1.1 }, "-=0.85")
-          .from(".hero-index", { x: 18, opacity: 0, duration: 0.6 }, "-=0.45");
+          .from(".nav-shell", { y: -24, opacity: 0, duration: 0.5 })
+          .from(".hero-kicker", { y: 18, opacity: 0, duration: 0.4 }, "-=0.25")
+          .from(".hero-line > span", { yPercent: 110, duration: 0.72, stagger: 0.07 }, "-=0.28")
+          .from(".hero-copy", { y: 22, opacity: 0, duration: 0.5 }, "-=0.48")
+          .from(".hero-actions", { y: 16, opacity: 0, duration: 0.45 }, "-=0.35")
+          .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.06, opacity: 0, duration: 0.8 }, "-=0.7")
+          .set(
+            ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
+            { clearProps: "transform,opacity,clipPath" },
+          );
       }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
-        gsap.from(element, {
-          y: reduceMotion ? 0 : 44,
-          opacity: 0,
-          duration: reduceMotion ? 0.32 : 0.85,
-          ease: reduceMotion ? "none" : "power3.out",
-          scrollTrigger: { trigger: element, start: "top 84%", once: true },
-        });
+        gsap.fromTo(
+          element,
+          { y: reduceMotion ? 0 : 44, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: reduceMotion ? 0.32 : 0.85,
+            ease: reduceMotion ? "none" : "power3.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: { trigger: element, start: "top 84%", once: true },
+          },
+        );
       });
 
       if (reduceMotion) {
-        gsap.from(".ascent-progress", {
-          opacity: 0,
-          duration: 0.32,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".journey-grid",
-            start: "top 76%",
-            once: true,
+        gsap.fromTo(
+          ".ascent-progress",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.32,
+            ease: "none",
+            clearProps: "opacity",
+            scrollTrigger: {
+              trigger: ".journey-grid",
+              start: "top 76%",
+              once: true,
+            },
           },
-        });
+        );
       } else {
         gsap.fromTo(".ascent-progress", {
           scaleY: 0,
@@ -116,6 +135,7 @@ export default function Home() {
           scaleY: 1,
           duration: 1.2,
           ease: "power2.out",
+          clearProps: "transform",
           scrollTrigger: {
             trigger: ".journey-grid",
             start: "top 76%",
@@ -124,7 +144,7 @@ export default function Home() {
         });
       }
 
-      return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      gsap.delayedCall(reduceMotion ? 0.4 : 0.9, () => ScrollTrigger.refresh());
     },
     { scope: root, dependencies: [introReady], revertOnUpdate: true },
   );
