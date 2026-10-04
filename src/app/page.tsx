@@ -65,40 +65,64 @@ export default function Home() {
       if (!introReady) return;
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduceMotion) return;
 
-      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-      intro
-        .from(".nav-shell", { y: -24, opacity: 0, duration: 0.7 })
-        .from(".hero-kicker", { y: 20, opacity: 0, duration: 0.55 }, "-=0.2")
-        .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.08 }, "-=0.25")
-        .from(".hero-copy", { y: 24, opacity: 0, duration: 0.65 }, "-=0.4")
-        .from(".hero-actions", { y: 18, opacity: 0, duration: 0.55 }, "-=0.4")
-        .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.08, opacity: 0, duration: 1.1 }, "-=0.85")
-        .from(".hero-index", { x: 18, opacity: 0, duration: 0.6 }, "-=0.45");
+      if (reduceMotion) {
+        const intro = gsap.timeline({ defaults: { ease: "none" } });
+        intro
+          .from(".nav-shell", { opacity: 0, duration: 0.24 })
+          .from(".hero-kicker", { opacity: 0, duration: 0.2 }, "-=0.1")
+          .from(".hero-line > span", { opacity: 0, duration: 0.24, stagger: 0.06 }, "-=0.08")
+          .from(".hero-copy", { opacity: 0, duration: 0.2 }, "-=0.1")
+          .from(".hero-actions", { opacity: 0, duration: 0.2 }, "-=0.1")
+          .from(".hero-visual", { opacity: 0, duration: 0.28 }, "-=0.12")
+          .from(".hero-index", { opacity: 0, duration: 0.2 }, "-=0.1");
+      } else {
+        const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+        intro
+          .from(".nav-shell", { y: -24, opacity: 0, duration: 0.7 })
+          .from(".hero-kicker", { y: 20, opacity: 0, duration: 0.55 }, "-=0.2")
+          .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.08 }, "-=0.25")
+          .from(".hero-copy", { y: 24, opacity: 0, duration: 0.65 }, "-=0.4")
+          .from(".hero-actions", { y: 18, opacity: 0, duration: 0.55 }, "-=0.4")
+          .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.08, opacity: 0, duration: 1.1 }, "-=0.85")
+          .from(".hero-index", { x: 18, opacity: 0, duration: 0.6 }, "-=0.45");
+      }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.from(element, {
-          y: 44,
+          y: reduceMotion ? 0 : 44,
           opacity: 0,
-          duration: 0.85,
-          ease: "power3.out",
+          duration: reduceMotion ? 0.32 : 0.85,
+          ease: reduceMotion ? "none" : "power3.out",
           scrollTrigger: { trigger: element, start: "top 84%", once: true },
         });
       });
 
-      gsap.fromTo(".ascent-progress", {
-        scaleY: 0,
-      }, {
-        scaleY: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".journey-grid",
-          start: "top 76%",
-          once: true,
-        },
-      });
+      if (reduceMotion) {
+        gsap.from(".ascent-progress", {
+          opacity: 0,
+          duration: 0.32,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".journey-grid",
+            start: "top 76%",
+            once: true,
+          },
+        });
+      } else {
+        gsap.fromTo(".ascent-progress", {
+          scaleY: 0,
+        }, {
+          scaleY: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".journey-grid",
+            start: "top 76%",
+            once: true,
+          },
+        });
+      }
 
       return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     },
