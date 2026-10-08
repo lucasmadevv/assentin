@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Building2,
@@ -50,6 +49,7 @@ const journey = [
 export default function Home() {
   const root = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerSolid, setHeaderSolid] = useState(false);
   const [sent, setSent] = useState(false);
   const [introReady, setIntroReady] = useState(false);
 
@@ -59,6 +59,14 @@ export default function Home() {
     document.body.classList.toggle("menu-open", menuOpen);
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
+
+  useEffect(() => {
+    const updateHeader = () => setHeaderSolid(window.scrollY > 24);
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
 
   useGSAP(
     () => {
@@ -157,7 +165,7 @@ export default function Home() {
   return (
     <main ref={root} aria-busy={!introReady}>
       <BrandPreloader onComplete={handlePreloaderComplete} />
-      <header className="nav-shell" aria-label="Navegação principal">
+      <header className={`nav-shell ${headerSolid || menuOpen ? "is-solid" : ""}`} aria-label="Navegação principal">
         <a className="brand" href="#inicio" aria-label="Assentin, início">
           <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} priority />
         </a>
@@ -197,8 +205,7 @@ export default function Home() {
             </h1>
             <p className="hero-copy">Planejamento, estratégia e acompanhamento para construir um futuro financeiro com mais clareza, segurança e liberdade.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#contato">Fale com um especialista <ArrowUpRight size={18} /></a>
-              <a className="text-link" href="#solucoes">Conheça as soluções <ArrowDown size={16} /></a>
+              <a className="text-link hero-cta-link" href="#contato">Fale com um especialista <ArrowUpRight size={18} /></a>
             </div>
           </div>
 
@@ -211,7 +218,6 @@ export default function Home() {
               </div>
               <span className="placeholder-code">IMG / 01</span>
             </div>
-            <div className="hero-monogram" aria-hidden="true"><i /><i /><i /></div>
           </div>
         </div>
         <div className="principles" aria-label="Princípios Assentin">
