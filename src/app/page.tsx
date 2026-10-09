@@ -10,7 +10,6 @@ import {
   ArrowUpRight,
   Building2,
   Check,
-  ImageIcon,
   Menu,
   MonitorUp,
   Sparkles,
@@ -195,6 +194,84 @@ export default function Home() {
       </header>
 
       <section className="hero" id="inicio">
+        <div className="hero-visual" aria-hidden="true">
+          <svg className="hero-architecture" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="hero-sky" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#071a31" />
+                <stop offset="0.48" stopColor="#0a2a51" />
+                <stop offset="1" stopColor="#041326" />
+              </linearGradient>
+              <radialGradient id="hero-light" cx="66%" cy="21%" r="64%">
+                <stop offset="0" stopColor="#2e67a9" stopOpacity="0.72" />
+                <stop offset="0.42" stopColor="#174478" stopOpacity="0.24" />
+                <stop offset="1" stopColor="#061a31" stopOpacity="0" />
+              </radialGradient>
+              <linearGradient id="hero-face-left" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#174b82" stopOpacity="0.82" />
+                <stop offset="0.58" stopColor="#0a284b" stopOpacity="0.94" />
+                <stop offset="1" stopColor="#04182e" />
+              </linearGradient>
+              <linearGradient id="hero-face-front" x1="0" y1="0" x2="0.96" y2="1">
+                <stop offset="0" stopColor="#0f3d70" />
+                <stop offset="1" stopColor="#031326" />
+              </linearGradient>
+              <linearGradient id="hero-face-right" x1="0" y1="0" x2="1" y2="0.7">
+                <stop offset="0" stopColor="#082949" />
+                <stop offset="1" stopColor="#020d1b" />
+              </linearGradient>
+              <pattern id="hero-grid" width="76" height="76" patternUnits="userSpaceOnUse">
+                <path d="M 76 0 L 0 0 0 76" fill="none" stroke="#7ea8d8" strokeOpacity="0.09" strokeWidth="1" />
+              </pattern>
+              <filter id="hero-glow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect width="1600" height="900" fill="url(#hero-sky)" />
+            <rect width="1600" height="900" fill="url(#hero-light)" />
+            <rect x="610" width="990" height="900" fill="url(#hero-grid)" opacity="0.52" />
+
+            <g className="hero-skyline" fill="none" stroke="#7ba5d3" strokeOpacity="0.2">
+              <path d="M1030 0V296L1120 244V0" />
+              <path d="M1280 0V292L1392 230V0" />
+              <path d="M1478 0V182" />
+              <path d="M904 0V365" />
+            </g>
+
+            <g className="hero-structure">
+              <path d="M438 900L1088 304L1257 398L1257 900Z" fill="url(#hero-face-left)" />
+              <path d="M1088 304L1257 398L1600 206V900H1257V398Z" fill="url(#hero-face-front)" />
+              <path d="M739 900L1257 398L1600 589V900Z" fill="url(#hero-face-right)" fillOpacity="0.98" />
+
+              <g fill="none" stroke="#83addb" strokeOpacity="0.2" strokeWidth="1.25">
+                <path d="M594 900L1088 304" />
+                <path d="M758 900L1088 304" />
+                <path d="M920 900L1088 304" />
+                <path d="M1088 304V900" />
+                <path d="M1172 351V900" />
+                <path d="M1257 398V900" />
+                <path d="M1343 350V900" />
+                <path d="M1430 301V900" />
+                <path d="M1516 253V900" />
+                <path d="M827 814L1257 398" />
+                <path d="M919 900L1257 573" />
+                <path d="M1257 565L1600 756" />
+              </g>
+
+              <path className="hero-edge-glow" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#a7c9ed" strokeWidth="3" filter="url(#hero-glow)" />
+              <path className="hero-edge-runner" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#d4e7fb" strokeWidth="1.3" />
+            </g>
+
+            <g className="hero-orbit" fill="none" stroke="#8cb4df" strokeOpacity="0.22">
+              <circle cx="1088" cy="304" r="22" />
+              <circle cx="1088" cy="304" r="42" strokeDasharray="2 12" />
+            </g>
+          </svg>
+          <div className="hero-visual-shade" />
+        </div>
+
         <div className="hero-grid page-shell">
           <div className="hero-content">
             <p className="eyebrow hero-kicker"><span className="eyebrow-dot" /> Consultoria financeira para pessoas e empresas</p>
@@ -206,17 +283,6 @@ export default function Home() {
             <p className="hero-copy">Planejamento, estratégia e acompanhamento para construir um futuro financeiro com mais clareza, segurança e liberdade.</p>
             <div className="hero-actions">
               <a className="text-link hero-cta-link" href="#contato">Fale com um especialista <ArrowUpRight size={18} /></a>
-            </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="media-placeholder hero-media-placeholder" role="img" aria-label="Espaço reservado para a imagem principal da Assentin">
-              <div className="placeholder-grid" aria-hidden="true" />
-              <div className="placeholder-copy">
-                <span className="placeholder-icon"><ImageIcon size={20} strokeWidth={1.5} /></span>
-                <div><small>Imagem principal</small><strong>Placeholder da hero</strong><p>Formato recomendado: horizontal, 1920 × 1280 px</p></div>
-              </div>
-              <span className="placeholder-code">IMG / 01</span>
             </div>
           </div>
         </div>
