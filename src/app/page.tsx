@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,8 +16,6 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { BrandPreloader } from "@/components/brand-preloader";
-
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const navigation = [
@@ -50,9 +48,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerSolid, setHeaderSolid] = useState(false);
   const [sent, setSent] = useState(false);
-  const [introReady, setIntroReady] = useState(false);
-
-  const handlePreloaderComplete = useCallback(() => setIntroReady(true), []);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
@@ -69,8 +64,6 @@ export default function Home() {
 
   useGSAP(
     () => {
-      if (!introReady) return;
-
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion) {
@@ -153,7 +146,7 @@ export default function Home() {
 
       gsap.delayedCall(reduceMotion ? 0.4 : 0.9, () => ScrollTrigger.refresh());
     },
-    { scope: root, dependencies: [introReady], revertOnUpdate: true },
+    { scope: root },
   );
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -162,8 +155,7 @@ export default function Home() {
   };
 
   return (
-    <main ref={root} aria-busy={!introReady}>
-      <BrandPreloader onComplete={handlePreloaderComplete} />
+    <main ref={root}>
       <header className={`nav-shell ${headerSolid || menuOpen ? "is-solid" : ""}`} aria-label="Navegação principal">
         <a className="brand" href="#inicio" aria-label="Assentin, início">
           <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} priority />
