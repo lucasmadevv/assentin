@@ -46,7 +46,6 @@ const journey = [
 export default function Home() {
   const root = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [headerSolid, setHeaderSolid] = useState(false);
   const [sent, setSent] = useState(false);
   const [introReady, setIntroReady] = useState(false);
 
@@ -59,14 +58,6 @@ export default function Home() {
     document.body.classList.toggle("menu-open", menuOpen);
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
-
-  useEffect(() => {
-    const updateHeader = () => setHeaderSolid(window.scrollY > 24);
-
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    return () => window.removeEventListener("scroll", updateHeader);
-  }, []);
 
   useGSAP(
     () => {
@@ -180,7 +171,7 @@ export default function Home() {
 
   return (
     <main ref={root} className={`home-page ${introReady ? "intro-ready" : ""}`}>
-      <header className={`nav-shell ${headerSolid || menuOpen ? "is-solid" : ""}`} aria-label="Navegação principal">
+      <header className={`nav-shell ${menuOpen ? "is-solid" : ""}`} aria-label="Navegação principal">
         <a className="brand" href="#inicio" aria-label="Assentin, início">
           <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} priority />
         </a>
