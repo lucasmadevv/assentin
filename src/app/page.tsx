@@ -76,7 +76,7 @@ export default function Home() {
 
       if (reduceMotion) {
         const introTargets = gsap.utils.toArray<HTMLElement>(
-          ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
+          ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .principles-track > *",
         );
 
         gsap.fromTo(
@@ -91,18 +91,34 @@ export default function Home() {
           },
         );
       } else {
+        const architectureLines = gsap.utils.toArray<SVGPathElement>(
+          ".hero-skyline path, .hero-frame-lines path",
+        );
+
+        architectureLines.forEach((line) => {
+          const length = line.getTotalLength();
+          gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+        });
+
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
-          .from(".nav-shell", { y: -24, opacity: 0, duration: 0.5 })
-          .from(".hero-kicker", { y: 18, opacity: 0, duration: 0.4 }, "-=0.25")
-          .from(".hero-line > span", { yPercent: 110, duration: 0.72, stagger: 0.07 }, "-=0.28")
-          .from(".hero-copy", { y: 22, opacity: 0, duration: 0.5 }, "-=0.48")
-          .from(".hero-actions", { y: 16, opacity: 0, duration: 0.45 }, "-=0.35")
-          .from(".hero-visual", { clipPath: "inset(14% 10% 14% 10%)", scale: 1.06, opacity: 0, duration: 0.8 }, "-=0.7")
+          .from(".hero-visual", { opacity: 0, scale: 1.045, duration: 1.25, ease: "power2.out" }, 0)
+          .from(".hero-ambient-light", { x: -120, opacity: 0, duration: 1.4, ease: "power2.out" }, 0.08)
+          .from(".hero-plane", { x: 34, y: 72, opacity: 0, duration: 1.12, stagger: 0.1 }, 0.12)
+          .to(architectureLines, { strokeDashoffset: 0, duration: 1.04, stagger: 0.035, ease: "power2.inOut" }, 0.18)
+          .from(".hero-edge-glow", { opacity: 0, duration: 0.9, ease: "power2.out" }, 0.42)
+          .from(".hero-orbit circle", { scale: 0.45, opacity: 0, duration: 0.72, stagger: 0.08 }, 0.48)
+          .from(".nav-shell", { y: -34, opacity: 0, duration: 0.58 }, 0.16)
+          .from(".hero-kicker", { x: -28, opacity: 0, duration: 0.5 }, 0.4)
+          .from(".hero-line > span", { yPercent: 115, rotateX: -12, duration: 0.84, stagger: 0.1 }, 0.5)
+          .from(".hero-copy", { y: 26, opacity: 0, duration: 0.58 }, 1)
+          .from(".hero-actions", { y: 20, opacity: 0, duration: 0.5 }, 1.12)
+          .from(".principles-track > *", { y: 10, opacity: 0, duration: 0.38, stagger: 0.045 }, 1.2)
           .set(
-            ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
-            { clearProps: "transform,opacity,clipPath" },
-          );
+            ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow, .hero-orbit circle, .principles-track > *",
+            { clearProps: "transform,opacity" },
+          )
+          .set(architectureLines, { clearProps: "strokeDasharray,strokeDashoffset" });
       }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
@@ -230,7 +246,7 @@ export default function Home() {
             </defs>
 
             <rect width="1600" height="900" fill="url(#hero-sky)" />
-            <rect width="1600" height="900" fill="url(#hero-light)" />
+            <rect className="hero-ambient-light" width="1600" height="900" fill="url(#hero-light)" />
             <rect x="610" width="990" height="900" fill="url(#hero-grid)" opacity="0.52" />
 
             <g className="hero-skyline" fill="none" stroke="#7ba5d3" strokeOpacity="0.2">
@@ -241,11 +257,11 @@ export default function Home() {
             </g>
 
             <g className="hero-structure">
-              <path d="M438 900L1088 304L1257 398L1257 900Z" fill="url(#hero-face-left)" />
-              <path d="M1088 304L1257 398L1600 206V900H1257V398Z" fill="url(#hero-face-front)" />
-              <path d="M739 900L1257 398L1600 589V900Z" fill="url(#hero-face-right)" fillOpacity="0.98" />
+              <path className="hero-plane" d="M438 900L1088 304L1257 398L1257 900Z" fill="url(#hero-face-left)" />
+              <path className="hero-plane" d="M1088 304L1257 398L1600 206V900H1257V398Z" fill="url(#hero-face-front)" />
+              <path className="hero-plane" d="M739 900L1257 398L1600 589V900Z" fill="url(#hero-face-right)" fillOpacity="0.98" />
 
-              <g fill="none" stroke="#83addb" strokeOpacity="0.2" strokeWidth="1.25">
+              <g className="hero-frame-lines" fill="none" stroke="#83addb" strokeOpacity="0.2" strokeWidth="1.25">
                 <path d="M594 900L1088 304" />
                 <path d="M758 900L1088 304" />
                 <path d="M920 900L1088 304" />
