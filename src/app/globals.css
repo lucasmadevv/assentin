@@ -206,13 +206,9 @@ section[id] { scroll-margin-top: 88px; }
 .hero-plane { transform-box: fill-box; transform-origin: center bottom; }
 .hero-frame-lines path, .hero-skyline path { vector-effect: non-scaling-stroke; }
 .hero-edge-glow { opacity: 0.62; }
-.hero-edge-runner { stroke-dasharray: 9 18; animation: hero-edge-travel 14s linear infinite; }
+.hero-edge-runner { stroke-dasharray: 9 18; stroke-dashoffset: 0; }
 .hero-orbit { transform-origin: 1088px 304px; animation: hero-orbit 18s linear infinite; }
 .hero-orbit circle { transform-box: fill-box; transform-origin: center; }
-
-@keyframes hero-edge-travel {
-  to { stroke-dashoffset: -270; }
-}
 
 @keyframes hero-orbit {
   to { transform: rotate(360deg); }

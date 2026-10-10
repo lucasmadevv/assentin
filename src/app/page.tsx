@@ -100,6 +100,12 @@ export default function Home() {
           gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
         });
 
+        gsap.fromTo(
+          ".hero-edge-runner",
+          { strokeDashoffset: 0 },
+          { strokeDashoffset: -270, duration: 6, repeat: -1, ease: "none" },
+        );
+
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
           .from(".hero-visual", { opacity: 0, scale: 1.045, duration: 1.25, ease: "power2.out" }, 0)
