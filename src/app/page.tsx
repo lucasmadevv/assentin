@@ -100,12 +100,6 @@ export default function Home() {
           gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
         });
 
-        gsap.fromTo(
-          ".hero-edge-runner",
-          { strokeDashoffset: 0 },
-          { strokeDashoffset: -270, duration: 6, repeat: -1, ease: "none" },
-        );
-
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
           .from(".hero-visual", { opacity: 0, scale: 1.045, duration: 1.25, ease: "power2.out" }, 0)
@@ -284,6 +278,7 @@ export default function Home() {
 
               <path className="hero-edge-glow" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#a7c9ed" strokeWidth="3" filter="url(#hero-glow)" />
               <path className="hero-edge-runner" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#d4e7fb" strokeWidth="1.3" />
+              <path className="hero-edge-sweep" pathLength="100" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#f0f7ff" strokeWidth="2.4" strokeLinecap="round" filter="url(#hero-glow)" />
             </g>
 
             <g className="hero-orbit" fill="none" stroke="#8cb4df" strokeOpacity="0.22">
