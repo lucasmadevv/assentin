@@ -48,6 +48,12 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerSolid, setHeaderSolid] = useState(false);
   const [sent, setSent] = useState(false);
+  const [introReady, setIntroReady] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIntroReady(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
@@ -64,6 +70,8 @@ export default function Home() {
 
   useGSAP(
     () => {
+      if (!introReady) return;
+
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion) {
@@ -146,7 +154,7 @@ export default function Home() {
 
       gsap.delayedCall(reduceMotion ? 0.4 : 0.9, () => ScrollTrigger.refresh());
     },
-    { scope: root },
+    { scope: root, dependencies: [introReady], revertOnUpdate: true },
   );
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -155,7 +163,7 @@ export default function Home() {
   };
 
   return (
-    <main ref={root}>
+    <main ref={root} className={`home-page ${introReady ? "intro-ready" : ""}`}>
       <header className={`nav-shell ${headerSolid || menuOpen ? "is-solid" : ""}`} aria-label="Navegação principal">
         <a className="brand" href="#inicio" aria-label="Assentin, início">
           <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} priority />

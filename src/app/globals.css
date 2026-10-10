@@ -51,6 +51,19 @@ section[id] { scroll-margin-top: 88px; }
   border: 0;
 }
 
+.home-page:not(.intro-ready) .nav-shell,
+.home-page:not(.intro-ready) .hero-kicker,
+.home-page:not(.intro-ready) .hero-copy,
+.home-page:not(.intro-ready) .hero-actions,
+.home-page:not(.intro-ready) .hero-visual {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.home-page:not(.intro-ready) .hero-line > span {
+  transform: translateY(110%);
+}
+
 .page-shell { width: var(--page); max-width: 1380px; margin-inline: auto; }
 .section-light { background: var(--equilibrio); }
 .section-dark { background: var(--patrimonio); color: white; }
