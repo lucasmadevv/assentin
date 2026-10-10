@@ -101,7 +101,7 @@ export default function Home() {
           .from(".hero-orbit circle", { scale: 0.45, opacity: 0, duration: 0.72, stagger: 0.08 }, 0.48)
           .from(".nav-shell", { y: -34, opacity: 0, duration: 0.58 }, 0.16)
           .from(".hero-kicker", { x: -28, opacity: 0, duration: 0.5 }, 0.4)
-          .from(".hero-line > span", { yPercent: 115, rotateX: -12, duration: 0.84, stagger: 0.1 }, 0.5)
+          .from(".hero-line > span", { yPercent: 115, rotateX: -12, opacity: 0, duration: 0.84, stagger: 0.1 }, 0.5)
           .from(".hero-copy", { y: 26, opacity: 0, duration: 0.58 }, 1)
           .from(".hero-actions", { y: 20, opacity: 0, duration: 0.5 }, 1.12)
           .from(".principles-track > *", { y: 10, opacity: 0, duration: 0.38, stagger: 0.045 }, 1.2)
