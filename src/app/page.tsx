@@ -79,8 +79,8 @@ export default function Home() {
   const [introReady, setIntroReady] = useState(false);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => setIntroReady(true));
-    return () => window.cancelAnimationFrame(frame);
+    const timer = window.setTimeout(() => setIntroReady(true), 120);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -136,7 +136,7 @@ export default function Home() {
 
       if (reduceMotion) {
         const introTargets = gsap.utils.toArray<HTMLElement>(
-          ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .principles-track > *",
+          ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .principles-track > *",
         );
 
         gsap.fromTo(
@@ -166,6 +166,7 @@ export default function Home() {
           .from(".hero-ambient-light", { x: -120, opacity: 0, duration: 1.4, ease: "power2.out" }, 0.08)
           .from(".hero-plane", { x: 34, y: 72, opacity: 0, duration: 1.12, stagger: 0.1 }, 0.12)
           .to(architectureLines, { strokeDashoffset: 0, duration: 1.04, stagger: 0.035, ease: "power2.inOut" }, 0.18)
+          .fromTo(".hero-content", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.88 }, 0.2)
           .from(".hero-edge-glow", { opacity: 0, duration: 0.9, ease: "power2.out" }, 0.42)
           .from(".hero-orbit circle", { scale: 0.45, opacity: 0, duration: 0.72, stagger: 0.08 }, 0.48)
           .from(".nav-shell", { y: -34, opacity: 0, duration: 0.58 }, 0.16)
@@ -175,7 +176,7 @@ export default function Home() {
           .from(".hero-actions", { y: 20, opacity: 0, duration: 0.5 }, 1.12)
           .from(".principles-track > *", { y: 10, opacity: 0, duration: 0.38, stagger: 0.045 }, 1.2)
           .set(
-            ".nav-shell, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow, .hero-orbit circle, .principles-track > *",
+            ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow, .hero-orbit circle, .principles-track > *",
             { clearProps: "transform,opacity" },
           )
           .set(architectureLines, { clearProps: "strokeDasharray,strokeDashoffset" });
