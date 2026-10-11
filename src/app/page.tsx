@@ -88,11 +88,51 @@ export default function Home() {
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
 
+  useEffect(() => {
+    const desktopWheel = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
+    if (!desktopWheel.matches) return;
+
+    let pendingDelta = 0;
+    let frame = 0;
+
+    const flushWheel = () => {
+      window.scrollBy({ top: pendingDelta, left: 0, behavior: "auto" });
+      pendingDelta = 0;
+      frame = 0;
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (event.defaultPrevented || event.ctrlKey || event.shiftKey) return;
+
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest("textarea, select, [data-native-scroll]")) return;
+
+      const unit = event.deltaMode === 1
+        ? 16
+        : event.deltaMode === 2
+          ? window.innerHeight
+          : 1;
+
+      event.preventDefault();
+      pendingDelta += event.deltaY * unit * 0.68;
+
+      if (!frame) frame = window.requestAnimationFrame(flushWheel);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   useGSAP(
     () => {
       if (!introReady) return;
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const compactViewport = window.matchMedia("(max-width: 620px)").matches;
 
       if (reduceMotion) {
         const introTargets = gsap.utils.toArray<HTMLElement>(
@@ -144,14 +184,14 @@ export default function Home() {
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.fromTo(
           element,
-          { y: reduceMotion ? 0 : 44, opacity: 0 },
+          { y: reduceMotion ? 0 : compactViewport ? 24 : 36, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: reduceMotion ? 0.32 : 0.85,
+            duration: reduceMotion ? 0.32 : compactViewport ? 0.62 : 0.76,
             ease: reduceMotion ? "none" : "power3.out",
             clearProps: "transform,opacity",
-            scrollTrigger: { trigger: element, start: "top 84%", once: true },
+            scrollTrigger: { trigger: element, start: compactViewport ? "top 91%" : "top 88%", once: true },
           },
         );
       });
