@@ -136,7 +136,7 @@ export default function Home() {
 
       if (reduceMotion) {
         const introTargets = gsap.utils.toArray<HTMLElement>(
-          ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
+          ".nav-shell, .hero-content, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
         );
 
         gsap.fromTo(
@@ -169,12 +169,11 @@ export default function Home() {
           .fromTo(".hero-content", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.88 }, 0.2)
           .from(".hero-edge-glow", { opacity: 0, duration: 0.9, ease: "power2.out" }, 0.42)
           .from(".nav-shell", { y: -34, opacity: 0, duration: 0.58 }, 0.16)
-          .from(".hero-kicker", { x: -28, opacity: 0, duration: 0.5 }, 0.4)
           .from(".hero-line > span", { yPercent: 115, rotateX: -12, opacity: 0, duration: 0.84, stagger: 0.1 }, 0.5)
           .from(".hero-copy", { y: 26, opacity: 0, duration: 0.58 }, 1)
           .from(".hero-actions", { y: 20, opacity: 0, duration: 0.5 }, 1.12)
           .set(
-            ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow",
+            ".nav-shell, .hero-content, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow",
             { clearProps: "transform,opacity" },
           )
           .set(architectureLines, { clearProps: "strokeDasharray,strokeDashoffset" });
@@ -339,7 +338,6 @@ export default function Home() {
 
         <div className="hero-grid page-shell">
           <div className="hero-content">
-            <p className="eyebrow hero-kicker"><span className="eyebrow-dot" /> Consultoria financeira para pessoas e empresas</p>
             <h1 className="hero-title" aria-label="A consultoria financeira para impulsionar o seu futuro.">
               <span className="hero-line"><span>A consultoria financeira</span></span>
               <span className="hero-line accent-line"><span>para impulsionar o seu futuro.</span></span>

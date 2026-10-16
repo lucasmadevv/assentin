@@ -72,7 +72,6 @@ section[id] { scroll-margin-top: 24px; }
 }
 
 .home-page:not(.intro-ready) .nav-shell,
-.home-page:not(.intro-ready) .hero-kicker,
 .home-page:not(.intro-ready) .hero-line > span,
 .home-page:not(.intro-ready) .hero-copy,
 .home-page:not(.intro-ready) .hero-actions,
@@ -88,7 +87,6 @@ section[id] { scroll-margin-top: 24px; }
 @media (scripting: none) {
   .home-page:not(.intro-ready) .hero,
   .home-page:not(.intro-ready) .nav-shell,
-  .home-page:not(.intro-ready) .hero-kicker,
   .home-page:not(.intro-ready) .hero-line > span,
   .home-page:not(.intro-ready) .hero-copy,
   .home-page:not(.intro-ready) .hero-actions,
@@ -426,7 +424,6 @@ footer { background: var(--estrategia); color: white; }
   .hero { min-height: 100svh; padding-top: 76px; }
   .hero-grid { align-items: center; padding: 30px 0 46px; }
   .hero-content { width: 100%; }
-  .hero-kicker { max-width: 290px; margin-bottom: 20px; font-size: 0.75rem; line-height: 1.55; }
   .hero-line { margin-bottom: -0.08em; padding-bottom: 0.17em; }
   .hero-copy { max-width: 34rem; margin-top: 22px; font-size: 0.9375rem; line-height: 1.65; }
   .hero-actions { margin-top: 25px; }
