@@ -136,7 +136,7 @@ export default function Home() {
 
       if (reduceMotion) {
         const introTargets = gsap.utils.toArray<HTMLElement>(
-          ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .principles-track > *",
+          ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual",
         );
 
         gsap.fromTo(
@@ -168,15 +168,13 @@ export default function Home() {
           .to(architectureLines, { strokeDashoffset: 0, duration: 1.04, stagger: 0.035, ease: "power2.inOut" }, 0.18)
           .fromTo(".hero-content", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.88 }, 0.2)
           .from(".hero-edge-glow", { opacity: 0, duration: 0.9, ease: "power2.out" }, 0.42)
-          .from(".hero-orbit circle", { scale: 0.45, opacity: 0, duration: 0.72, stagger: 0.08 }, 0.48)
           .from(".nav-shell", { y: -34, opacity: 0, duration: 0.58 }, 0.16)
           .from(".hero-kicker", { x: -28, opacity: 0, duration: 0.5 }, 0.4)
           .from(".hero-line > span", { yPercent: 115, rotateX: -12, opacity: 0, duration: 0.84, stagger: 0.1 }, 0.5)
           .from(".hero-copy", { y: 26, opacity: 0, duration: 0.58 }, 1)
           .from(".hero-actions", { y: 20, opacity: 0, duration: 0.5 }, 1.12)
-          .from(".principles-track > *", { y: 10, opacity: 0, duration: 0.38, stagger: 0.045 }, 1.2)
           .set(
-            ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow, .hero-orbit circle, .principles-track > *",
+            ".nav-shell, .hero-content, .hero-kicker, .hero-line > span, .hero-copy, .hero-actions, .hero-visual, .hero-ambient-light, .hero-plane, .hero-edge-glow",
             { clearProps: "transform,opacity" },
           )
           .set(architectureLines, { clearProps: "strokeDasharray,strokeDashoffset" });
@@ -308,13 +306,11 @@ export default function Home() {
 
             <rect width="1600" height="900" fill="url(#hero-sky)" />
             <rect className="hero-ambient-light" width="1600" height="900" fill="url(#hero-light)" />
-            <rect x="610" width="990" height="900" fill="url(#hero-grid)" opacity="0.52" />
+            <rect className="hero-grid-pattern" x="610" width="990" height="900" fill="url(#hero-grid)" />
 
             <g className="hero-skyline" fill="none" stroke="#7ba5d3" strokeOpacity="0.2">
               <path d="M1030 0V296L1120 244V0" />
               <path d="M1280 0V292L1392 230V0" />
-              <path d="M1478 0V182" />
-              <path d="M904 0V365" />
             </g>
 
             <g className="hero-structure">
@@ -323,17 +319,12 @@ export default function Home() {
               <path className="hero-plane" d="M739 900L1257 398L1600 589V900Z" fill="url(#hero-face-right)" fillOpacity="0.98" />
 
               <g className="hero-frame-lines" fill="none" stroke="#83addb" strokeOpacity="0.2" strokeWidth="1.25">
-                <path d="M594 900L1088 304" />
                 <path d="M758 900L1088 304" />
                 <path d="M920 900L1088 304" />
                 <path d="M1088 304V900" />
-                <path d="M1172 351V900" />
                 <path d="M1257 398V900" />
-                <path d="M1343 350V900" />
                 <path d="M1430 301V900" />
-                <path d="M1516 253V900" />
                 <path d="M827 814L1257 398" />
-                <path d="M919 900L1257 573" />
                 <path d="M1257 565L1600 756" />
               </g>
 
@@ -342,10 +333,6 @@ export default function Home() {
               <path className="hero-edge-sweep" pathLength="100" d="M438 900L1088 304L1257 398L1600 206" fill="none" stroke="#f0f7ff" strokeWidth="2.4" strokeLinecap="round" filter="url(#hero-glow)" />
             </g>
 
-            <g className="hero-orbit" fill="none" stroke="#8cb4df" strokeOpacity="0.22">
-              <circle cx="1088" cy="304" r="22" />
-              <circle cx="1088" cy="304" r="42" strokeDasharray="2 12" />
-            </g>
           </svg>
           <div className="hero-visual-shade" />
         </div>
@@ -353,24 +340,14 @@ export default function Home() {
         <div className="hero-grid page-shell">
           <div className="hero-content">
             <p className="eyebrow hero-kicker"><span className="eyebrow-dot" /> Consultoria financeira para pessoas e empresas</p>
-            <h1 className="hero-title" aria-label="Inteligência financeira para transformar decisões em patrimônio">
-              <span className="hero-line"><span>Inteligência financeira</span></span>
-              <span className="hero-line"><span>para transformar</span></span>
-              <span className="hero-line accent-line"><span>decisões em patrimônio.</span></span>
+            <h1 className="hero-title" aria-label="A consultoria financeira para impulsionar o seu futuro.">
+              <span className="hero-line"><span>A consultoria financeira</span></span>
+              <span className="hero-line accent-line"><span>para impulsionar o seu futuro.</span></span>
             </h1>
-            <p className="hero-copy">Planejamento, estratégia e acompanhamento para construir um futuro financeiro com mais clareza, segurança e liberdade.</p>
+            <p className="hero-copy">Para suas conquistas pessoais ou os próximos passos do seu negócio, unimos planejamento, tecnologia e estratégia para transformar objetivos em resultados.</p>
             <div className="hero-actions">
-              <a className="text-link hero-cta-link" href="#contato">Fale com um especialista <ArrowUpRight size={18} /></a>
+              <a className="text-link hero-cta-link" href="#solucoes">Conheça nossas soluções <ArrowRight size={18} /></a>
             </div>
-          </div>
-        </div>
-        <div className="principles" aria-label="Princípios Assentin">
-          <div className="principles-track">
-            <span>Confiança</span><i />
-            <span>Experiência</span><i />
-            <span>Suporte</span><i />
-            <span>Estratégia</span><i />
-            <span>Evolução</span><i />
           </div>
         </div>
       </section>
