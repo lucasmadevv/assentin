@@ -368,14 +368,17 @@ section[id] { scroll-margin-top: 24px; }
 .why-item > svg { margin-top: 2px; color: #4778b0; }
 
 /* Institutional */
-.institutional { padding: 105px 0; }
-.institutional-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 66px; align-items: center; }
-.brand-image { position: relative; min-height: 470px; border-radius: 4px 4px 48px 4px; overflow: hidden; }
-.brand-image img { object-fit: cover; object-position: 52% center; }
-.brand-image > span { position: absolute; left: 18px; right: 18px; bottom: 18px; max-width: 320px; padding: 14px 17px; border-radius: 5px; background: rgba(7, 28, 48, 0.82); backdrop-filter: blur(12px); color: rgba(255, 255, 255, 0.78); font-size: 0.75rem; line-height: 1.55; }
-.institutional-copy h2 { margin: 0; font-size: clamp(2.7rem, 11.5vw, 4.4rem); font-weight: 500; letter-spacing: -0.06em; line-height: 1; }
-.institutional-copy > p { margin: 30px 0; color: var(--muted); line-height: 1.8; }
-.brand-principles { margin-bottom: 34px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; color: var(--ascensao); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.institutional { padding: 105px 0; background: #f8fafc; }
+.institutional-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 52px; align-items: center; }
+.brand-image { position: relative; min-height: 440px; aspect-ratio: 4 / 3; border-radius: 3px 3px 42px 3px; overflow: hidden; background: #dfe6ed; }
+.brand-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 32, 68, 0.02), rgba(7, 32, 68, 0.14)); pointer-events: none; }
+.brand-image img { object-fit: cover; object-position: 50% center; transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.brand-image:hover img { transform: scale(1.018); }
+.institutional-copy { max-width: 690px; }
+.institutional-copy .eyebrow { margin-bottom: 27px; }
+.institutional-copy h2 { margin: 0; color: var(--patrimonio); font-size: clamp(2.65rem, 10.8vw, 4.25rem); font-weight: 500; letter-spacing: -0.058em; line-height: 1.01; }
+.institutional-copy h2 span { color: #4f7fb7; }
+.institutional-copy > p:last-child { max-width: 610px; margin: 32px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.8; }
 
 /* Contact */
 .contact { position: relative; padding: 108px 0 96px; overflow: hidden; }
@@ -477,11 +480,12 @@ footer { background: var(--estrategia); color: white; }
   .why-item p { font-size: 0.8125rem; }
 
   .institutional { padding: 86px 0; }
-  .institutional-grid { gap: 42px; }
-  .brand-image { min-height: 360px; border-radius: 4px 4px 38px 4px; }
+  .institutional-grid { gap: 40px; }
+  .brand-image { min-height: 330px; border-radius: 3px 3px 34px 3px; }
+  .brand-image img { object-position: 52% center; }
+  .institutional-copy .eyebrow { margin-bottom: 22px; }
   .institutional-copy h2 { font-size: clamp(2.45rem, 11.8vw, 3.3rem); line-height: 1.01; }
-  .institutional-copy > p { margin: 24px 0; font-size: 0.9375rem; line-height: 1.65; }
-  .brand-principles { justify-content: flex-start; gap: 12px 22px; }
+  .institutional-copy > p:last-child { margin-top: 24px; font-size: 0.9375rem; line-height: 1.7; }
 
   .contact { padding: 86px 0 78px; }
   .contact-grid { gap: 42px; }
@@ -576,9 +580,9 @@ footer { background: var(--estrategia); color: white; }
   .why-list { background: var(--equilibrio); }
   .why-item { grid-template-columns: 64px minmax(0, 1fr) 22px; padding: 24px 0; gap: 22px; }
   .why-number { padding-right: 20px; }
-  .institutional-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 8vw; }
-  .brand-image { min-height: 670px; border-radius: 4px 4px 80px 4px; }
-  .brand-image > span { left: 28px; right: auto; bottom: 28px; }
+  .institutional-grid { grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); gap: 7vw; }
+  .brand-image { min-height: 620px; aspect-ratio: auto; border-radius: 3px 3px 58px 3px; }
+  .institutional-copy h2 { font-size: clamp(3.25rem, 4.2vw, 4.65rem); }
   .contact-grid { grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); gap: 8vw; }
   .contact-copy h2 { font-size: clamp(3.8rem, 5vw, 6rem); }
   .contact-form { max-width: none; }

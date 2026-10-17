@@ -515,15 +515,17 @@ export default function Home() {
       <section className="institutional section-light" id="assentin">
         <div className="page-shell institutional-grid">
           <div className="brand-image" data-reveal>
-            <Image src="/brand/brand-kit.jpg" alt="Kit institucional da Assentin" fill sizes="(max-width: 900px) 100vw, 48vw" loading="eager" />
-            <span>Identidade que traduz confiança, experiência e suporte.</span>
+            <Image
+              src="/images/assentin-team-placeholder.jpg"
+              alt="Profissionais reunidos em um ambiente corporativo"
+              fill
+              sizes="(max-width: 900px) 100vw, 48vw"
+            />
           </div>
           <div className="institutional-copy" data-reveal>
-            <p className="eyebrow"><span className="eyebrow-dot" /> A Assentin</p>
-            <h2>Uma empresa financeira preparada para crescer com você.</h2>
-            <p>A Assentin nasce para transformar planejamento em possibilidades e decisões em segurança. Uma atuação estruturada, próxima e orientada ao futuro.</p>
-            <div className="brand-principles"><span>Confiança</span><span>Experiência</span><span>Suporte</span></div>
-            <a className="text-link dark-link" href="#contato">Conheça nossa visão <ArrowRight size={17} /></a>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Quem somos</p>
+            <h2>Uma empresa preparada para <span>acompanhar você</span> em cada fase da sua jornada.</h2>
+            <p>A Assentin reúne consultoria financeira, tecnologia e soluções para pessoas e empresas. Nossa atuação combina conhecimento, proximidade e inovação para oferecer o suporte adequado às necessidades de cada momento.</p>
           </div>
         </div>
       </section>
