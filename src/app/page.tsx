@@ -72,6 +72,34 @@ const technologyFeatures = [
   },
 ];
 
+const assentinDifferentials = [
+  {
+    number: "01",
+    title: "Atendimentos personalizados",
+    text: "Estratégias desenvolvidas a partir da sua realidade, prioridades e objetivos.",
+  },
+  {
+    number: "02",
+    title: "Visão 360° das finanças",
+    text: "Uma análise completa e integrada da sua vida financeira ou do seu negócio.",
+  },
+  {
+    number: "03",
+    title: "Sem conflito de interesse",
+    text: "Recomendações transparentes e alinhadas aos seus objetivos, sempre com foco no seu melhor resultado.",
+  },
+  {
+    number: "04",
+    title: "Sistema exclusivo",
+    text: "Plataforma própria para organizar informações, acompanhar indicadores e facilitar sua gestão financeira.",
+  },
+  {
+    number: "05",
+    title: "Acompanhamento de perto",
+    text: "Uma relação contínua, com apoio nas decisões e evolução ao longo do tempo.",
+  },
+];
+
 export default function Home() {
   const root = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -454,27 +482,29 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="results section-light" aria-labelledby="resultados-titulo">
+      <section className="results section-light" aria-labelledby="diferenciais-titulo">
         <div className="results-media" data-reveal>
-          <Image src="/images/assentin-personal-dusk.webp" alt="Ambiente de planejamento com vista para a cidade" fill sizes="100vw" />
+          <Image src="/images/assentin-personal-dusk.webp" alt="Caderno de planejamento em um ambiente com vista para a cidade" fill sizes="(max-width: 900px) 100vw, 58vw" />
           <div className="results-gradient" aria-hidden="true" />
         </div>
-        <div className="page-shell results-content">
-          <div className="results-copy" data-reveal>
-            <p className="eyebrow"><span className="eyebrow-dot" /> Resultados na prática</p>
-            <h2 id="resultados-titulo">Mais clareza para organizar, decidir e evoluir.</h2>
-            <p>O resultado aparece quando planejamento deixa de ser uma intenção e passa a orientar escolhas reais, com acompanhamento ao longo do caminho.</p>
-            <div className="outcome-list">
-              <span>Organização financeira</span>
-              <span>Visão de patrimônio</span>
-              <span>Decisões com contexto</span>
-            </div>
+        <div className="page-shell why-grid">
+          <div className="why-intro" data-reveal>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Por que a Assentin</p>
+            <h2 id="diferenciais-titulo">A diferença está em como <span>cuidamos do seu futuro.</span></h2>
+            <p>Uma abordagem que combina atendimento personalizado, visão estratégica, independência e tecnologia própria para oferecer uma experiência financeira mais completa.</p>
           </div>
-          <aside className="results-card" data-reveal>
-            <p className="eyebrow"><span className="eyebrow-dot" /> O que muda</p>
-            <blockquote>“Cada recomendação considera o momento, as prioridades e o futuro que a pessoa ou a empresa deseja construir.”</blockquote>
-            <div><span>Assentin</span><small>Consultoria Financeira</small></div>
-          </aside>
+          <div className="why-list" data-reveal>
+            {assentinDifferentials.map((item) => (
+              <article className="why-item" key={item.number}>
+                <span className="why-number">{item.number}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+                <ArrowUpRight aria-hidden="true" size={19} strokeWidth={1.5} />
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
