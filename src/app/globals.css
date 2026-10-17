@@ -332,6 +332,7 @@ section[id] { scroll-margin-top: 24px; }
 .technology { padding: 0; background: #f7f9fb; }
 .tech-layout { display: grid; grid-template-columns: minmax(0, 1fr); }
 .tech-copy { padding: 100px max(14px, calc((100vw - 1380px) / 2)); }
+.tech-copy .eyebrow { margin-bottom: 34px; }
 .tech-copy h2 { max-width: 650px; margin: 0; font-size: clamp(2.75rem, 11vw, 4.5rem); font-weight: 500; letter-spacing: -0.06em; line-height: 0.98; }
 .tech-copy > p { max-width: 600px; margin: 26px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
 .tech-features { max-width: 670px; margin-top: 34px; border-top: 1px solid var(--line); }

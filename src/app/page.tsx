@@ -56,17 +56,17 @@ const journey = [
 
 const technologyFeatures = [
   {
-    title: "Visão completa",
+    title: "Gestão financeira pessoal e empresarial",
     text: "Informações organizadas de forma clara para acompanhar sua evolução.",
     icon: BarChart3,
   },
   {
-    title: "Acesso em qualquer lugar",
+    title: "Tudo em um só lugar",
     text: "Uma experiência digital simples, disponível sempre que você precisar.",
     icon: Smartphone,
   },
   {
-    title: "Integração com o consultor",
+    title: "Tecnologia integrada à consultoria",
     text: "Tecnologia e acompanhamento humano trabalhando no mesmo contexto.",
     icon: Users,
   },
@@ -434,8 +434,8 @@ export default function Home() {
       <section className="technology" id="tecnologia">
         <div className="tech-layout">
           <div className="tech-copy" data-reveal>
-            <p className="eyebrow"><span className="eyebrow-dot" /> Tecnologia Assentin</p>
-            <h2>Uma plataforma <span>para simplificar</span> suas decisões.</h2>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Tecnologia própria</p>
+            <h2>Uma nova experiência em <span>gestão financeira.</span></h2>
             <p>Organize suas finanças, acompanhe sua evolução e tenha informações claras em um só lugar.</p>
             <div className="tech-features">
               {technologyFeatures.map((feature) => (
