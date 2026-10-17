@@ -367,11 +367,11 @@ export default function Home() {
                 <p className="solution-audience">Para você</p>
                 <h3>Consultoria Financeira <span>Pessoal</span></h3>
                 <p>Organize sua vida financeira, planeje seus objetivos e construa patrimônio com acompanhamento contínuo e personalizado.</p>
-                <div className="solution-tags"><span>Organização</span><span>Planejamento</span><span>Patrimônio</span></div>
+                <div className="solution-tags"><span>Organização</span><span>Acompanhamento</span><span>Resultados</span></div>
                 <a className="text-link dark-link" href="#contato">Conheça a solução <ArrowRight size={17} /></a>
               </div>
               <div className="solution-story-image">
-                <Image src="/images/assentin-personal-dusk.webp" alt="Ambiente de planejamento financeiro com caderno e vista para a cidade" fill sizes="(max-width: 900px) 100vw, 50vw" />
+                <Image src="/images/assentin-personal-planning.png" alt="Pessoa organizando seu planejamento financeiro em casa" fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
             </article>
 
@@ -394,8 +394,8 @@ export default function Home() {
                 <div className="solution-number"><span>03</span><i /></div>
                 <p className="solution-audience">Para empresas</p>
                 <h3>Consultoria Financeira <span>Empresarial</span></h3>
-                <p>Gestão financeira, planejamento e inteligência para transformar dados em decisões e apoiar o crescimento da empresa.</p>
-                <div className="solution-tags"><span>Fluxo de caixa</span><span>Indicadores</span><span>Planejamento</span></div>
+                <p>Tenha mais controle sobre as finanças da sua empresa, tome decisões com segurança e conte com acompanhamento estratégico para crescer de forma sustentável.</p>
+                <div className="solution-tags"><span>Gestão</span><span>Estratégia</span><span>Crescimento</span></div>
                 <a className="text-link dark-link" href="#contato">Conheça a solução <ArrowRight size={17} /></a>
               </div>
               <div className="solution-story-image">
@@ -412,7 +412,7 @@ export default function Home() {
         <div className="page-shell method-layout">
           <div className="method-intro" data-reveal>
             <p className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" /> Como funciona a consultoria</p>
-            <h2>Planejamento não termina <span>em uma reunião.</span></h2>
+            <h2>Conheça o caminho por trás <span>de cada conquista.</span></h2>
             <p>Um processo estruturado, contínuo e personalizado para transformar sua vida financeira ou a gestão da sua empresa.</p>
           </div>
 
@@ -499,7 +499,7 @@ export default function Home() {
         <div className="page-shell contact-grid">
           <div className="contact-copy" data-reveal>
             <p className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" /> Próximo passo</p>
-            <h2>Seu futuro financeiro começa com uma boa conversa.</h2>
+            <h2>Seu próximo passo começa aqui.</h2>
             <p>Conte brevemente o que você busca. Um especialista Assentin ajuda a identificar o melhor caminho para o seu momento.</p>
           </div>
 
