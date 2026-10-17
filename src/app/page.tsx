@@ -489,8 +489,12 @@ export default function Home() {
         </div>
         <div className="page-shell why-grid">
           <div className="why-intro" data-reveal>
-            <p className="eyebrow"><span className="eyebrow-dot" /> Por que a Assentin</p>
-            <h2 id="diferenciais-titulo">A diferença está em como <span>cuidamos do seu futuro.</span></h2>
+            <p className="eyebrow why-eyebrow">Por que a Assentin <i aria-hidden="true" /></p>
+            <h2 id="diferenciais-titulo">
+              <span>A diferença está</span>
+              <span>em como <em>cuidamos</em></span>
+              <span className="why-accent">do seu futuro.</span>
+            </h2>
             <p>Uma abordagem que combina atendimento personalizado, visão estratégica, independência e tecnologia própria para oferecer uma experiência financeira mais completa.</p>
           </div>
           <div className="why-list" data-reveal>
