@@ -412,7 +412,15 @@ section[id] { scroll-margin-top: 82px; }
 footer { background: var(--estrategia); color: white; }
 .footer-main { padding: 48px 0 40px; display: grid; gap: 38px; }
 .footer-brand img { width: min(100%, 250px); height: auto; }
-.footer-brand p { max-width: 340px; margin: 16px 0 0; color: rgba(255, 255, 255, 0.43); font-size: 0.875rem; line-height: 1.65; }
+.footer-brand > p { max-width: 340px; margin: 16px 0 0; color: rgba(255, 255, 255, 0.43); font-size: 0.875rem; line-height: 1.65; }
+.footer-company { max-width: 620px; margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: grid; gap: 10px; font-style: normal; }
+.footer-company-name { color: rgba(255, 255, 255, 0.76); font-size: 0.9375rem; font-weight: 650; line-height: 1.5; }
+.footer-company-id { color: rgba(255, 255, 255, 0.46); font-size: 0.8125rem; }
+.footer-company a { width: fit-content; max-width: 100%; display: grid; gap: 2px; }
+.footer-company a > span { color: rgba(255, 255, 255, 0.4); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-company a b { color: #48d99a; font-size: 0.9rem; font-weight: 650; overflow-wrap: anywhere; transition: color 0.2s ease; }
+.footer-company a:hover b, .footer-company a:focus-visible b { color: #7aefbc; }
+.footer-socials { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 10px 24px; color: rgba(255, 255, 255, 0.58); font-size: 0.8125rem; }
 .footer-links { width: 100%; max-width: 430px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
 .footer-links > div { min-width: 0; display: grid; align-content: start; gap: 11px; }
 .footer-links span { margin-bottom: 5px; color: #7e9fc5; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -497,6 +505,7 @@ footer { background: var(--estrategia); color: white; }
 
   .footer-main { padding: 42px 0 34px; gap: 32px; }
   .footer-brand img { width: min(100%, 220px); }
+  .footer-company { margin-top: 22px; padding-top: 20px; }
   .footer-links { max-width: none; grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .footer-bottom div { flex-wrap: wrap; gap: 12px 22px; }
 }
@@ -529,6 +538,8 @@ footer { background: var(--estrategia); color: white; }
   .form-footer { align-items: center; flex-direction: row; justify-content: space-between; gap: 24px; }
   .form-footer p { order: initial; }
   .button-light { width: auto; }
+  .footer-company { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
+  .footer-company-name, .footer-company-id, .footer-socials { grid-column: 1 / -1; }
   .footer-bottom { align-items: center; flex-direction: row; justify-content: space-between; }
 }
 

@@ -551,7 +551,16 @@ export default function Home() {
                 <label><span>Nome</span><input name="name" type="text" placeholder="Como podemos chamar você?" required /></label>
                 <label><span>E-mail</span><input name="email" type="email" placeholder="seu@email.com" required /></label>
               </div>
-              <label><span>Estou buscando</span><select name="profile" defaultValue="" required><option value="" disabled>Selecione uma opção</option><option>Planejamento para mim</option><option>Soluções para minha empresa</option><option>Conhecer o ecossistema Assentin</option></select></label>
+              <label>
+                <span>Estou buscando</span>
+                <select name="profile" defaultValue="" required>
+                  <option value="" disabled>Selecione uma opção</option>
+                  <option value="pessoal">Consultoria Financeira pessoal</option>
+                  <option value="familiar">Consultoria financeira familiar</option>
+                  <option value="autonomos">Consultoria financeira para autônomos</option>
+                  <option value="empresarial">Consultoria financeira empresarial</option>
+                </select>
+              </label>
               <label><span>Mensagem <small>(opcional)</small></span><textarea name="message" rows={3} placeholder="Conte um pouco sobre o seu momento." /></label>
               <div className="form-footer"><p>Ao continuar, você concorda com o uso dos dados para retorno do contato.</p><button className="button button-light" type="submit">Quero conversar <ArrowUpRight size={18} /></button></div>
             </form>
@@ -561,7 +570,26 @@ export default function Home() {
 
       <footer>
         <div className="page-shell footer-main">
-          <div className="footer-brand"><Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} /><p>Inteligência financeira para transformar decisões em patrimônio.</p></div>
+          <div className="footer-brand">
+            <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} />
+            <p>Inteligência financeira para transformar decisões em patrimônio.</p>
+            <address className="footer-company">
+              <strong className="footer-company-name">Assentin Consultoria Financeira Ltda</strong>
+              <span className="footer-company-id">CNPJ 60.719.330/0001-63</span>
+              <a href="https://wa.me/5535997659085" target="_blank" rel="noreferrer">
+                <span>Telefone/WhatsApp</span>
+                <b>35 99765-9085</b>
+              </a>
+              <a href="mailto:contato@assentin.com.br">
+                <span>E-mail</span>
+                <b>contato@assentin.com.br</b>
+              </a>
+              <div className="footer-socials" aria-label="Redes sociais">
+                <span>Instagram</span>
+                <span>LinkedIn</span>
+              </div>
+            </address>
+          </div>
           <div className="footer-links"><div><span>Navegação</span>{navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><span>Soluções</span><a href="#solucoes">Para você</a><a href="#solucoes">Profissionais liberais</a><a href="#solucoes">Para empresas</a><a href="#tecnologia">Tecnologia</a></div></div>
         </div>
         <div className="page-shell footer-bottom"><span>© 2026 Assentin. Todos os direitos reservados.</span><div><a href="#">Privacidade</a><a href="#">Termos de uso</a></div></div>
