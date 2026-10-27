@@ -24,7 +24,7 @@ const navigation = [
   ["Soluções", "#solucoes"],
   ["Como funciona", "#metodo"],
   ["Tecnologia", "#tecnologia"],
-  ["A Assentin", "#assentin"],
+  ["Sobre nós", "#assentin"],
 ];
 
 const journey = [
@@ -505,7 +505,6 @@ export default function Home() {
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </div>
-                <ArrowUpRight aria-hidden="true" size={19} strokeWidth={1.5} />
               </article>
             ))}
           </div>
