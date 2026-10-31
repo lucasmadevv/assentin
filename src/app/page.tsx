@@ -572,27 +572,45 @@ export default function Home() {
         <div className="page-shell footer-main">
           <div className="footer-brand">
             <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} />
-            <p>Inteligência financeira para transformar decisões em patrimônio.</p>
-            <address className="footer-company">
-              <strong className="footer-company-name">Assentin Consultoria Financeira Ltda</strong>
-              <span className="footer-company-id">CNPJ 60.719.330/0001-63</span>
-              <a href="https://wa.me/5535997659085" target="_blank" rel="noreferrer">
-                <span>Telefone/WhatsApp</span>
-                <b>35 99765-9085</b>
-              </a>
-              <a href="mailto:contato@assentin.com.br">
-                <span>E-mail</span>
-                <b>contato@assentin.com.br</b>
-              </a>
-              <div className="footer-socials" aria-label="Redes sociais">
-                <span>Instagram</span>
-                <span>LinkedIn</span>
-              </div>
-            </address>
+            <p>A consultoria financeira para impulsionar o seu futuro.</p>
+            <div className="footer-socials" aria-label="Redes sociais">
+              <span className="footer-social-icon" role="img" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle className="social-dot" cx="17.7" cy="6.5" r="1" /></svg>
+              </span>
+              <span className="footer-social-icon" role="img" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 9.25v9.25M5.5 5.5v.1M10 18.5v-9.25M10 13.25c.8-2.7 6.5-3.4 6.5 1.7v3.55" /></svg>
+              </span>
+            </div>
           </div>
-          <div className="footer-links"><div><span>Navegação</span>{navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><span>Soluções</span><a href="#solucoes">Para você</a><a href="#solucoes">Profissionais liberais</a><a href="#solucoes">Para empresas</a><a href="#tecnologia">Tecnologia</a></div></div>
+          <nav className="footer-column" aria-label="Explore">
+            <span>Explore</span>
+            <a href="#metodo">Como funciona</a>
+            <a href="#tecnologia">Tecnologia</a>
+            <a href="#assentin">Sobre nós</a>
+          </nav>
+          <nav className="footer-column" aria-label="Soluções">
+            <span>Soluções</span>
+            <a href="#solucoes">Para você</a>
+            <a href="#solucoes">Profissionais liberais</a>
+            <a href="#solucoes">Para empresas</a>
+          </nav>
+          <address className="footer-column footer-contact">
+            <span>Contato</span>
+            <a href="https://wa.me/5535997659085" target="_blank" rel="noreferrer">
+              <small>Telefone / WhatsApp</small>
+              <strong>(35) 99765-9085</strong>
+            </a>
+            <a href="mailto:contato@assentin.com.br">contato@assentin.com.br</a>
+          </address>
         </div>
-        <div className="page-shell footer-bottom"><span>© 2026 Assentin. Todos os direitos reservados.</span><div><a href="#">Privacidade</a><a href="#">Termos de uso</a></div></div>
+        <div className="page-shell footer-bottom">
+          <div className="footer-legal-company">
+            <strong>Assentin Consultoria Financeira Ltda</strong>
+            <span>CNPJ 60.719.330/0001-63</span>
+          </div>
+          <span className="footer-copyright">© 2026 Assentin. Todos os direitos reservados.</span>
+          <div className="footer-policies"><a href="#">Privacidade</a><i aria-hidden="true" /><a href="#">Termos de uso</a></div>
+        </div>
       </footer>
     </main>
   );
