@@ -138,11 +138,10 @@ section[id] { scroll-margin-top: 24px; }
   padding: 6px 20px 0;
   transform: none;
   border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 0;
-  background: rgba(7, 28, 48, 0.94);
+  background: transparent;
   box-shadow: none;
-  backdrop-filter: blur(16px);
+  backdrop-filter: none;
   display: flex;
   align-items: center;
   transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
@@ -417,6 +416,8 @@ footer { background: var(--estrategia); color: white; }
 .footer-social-icon { width: 36px; height: 36px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50%; color: rgba(255, 255, 255, 0.72); display: grid; place-items: center; }
 .footer-social-icon svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .footer-social-icon .social-dot { fill: currentColor; stroke: none; }
+.footer-social-icon .social-fill { fill: currentColor; stroke: none; }
+.footer-social-icon:hover, .footer-social-icon:focus-visible { border-color: rgba(255, 255, 255, 0.62); color: white; }
 .footer-column { min-width: 0; display: grid; align-content: start; justify-items: start; gap: 13px; font-style: normal; }
 .footer-column > span { margin-bottom: 7px; color: #7e9fc5; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
 .footer-column a { color: rgba(255, 255, 255, 0.58); font-size: 0.9375rem; line-height: 1.45; transition: color 0.2s ease; }

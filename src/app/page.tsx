@@ -27,6 +27,8 @@ const navigation = [
   ["Sobre nós", "#assentin"],
 ];
 
+const whatsappUrl = "https://wa.me/553599045269";
+
 const journey = [
   {
     number: "01",
@@ -261,6 +263,16 @@ export default function Home() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const message = [
+      "Olá! Gostaria de conversar com um especialista da Assentin.",
+      `Nome: ${formData.get("name") ?? ""}`,
+      `E-mail: ${formData.get("email") ?? ""}`,
+      `Interesse: ${formData.get("profile") ?? ""}`,
+      formData.get("message") ? `Mensagem: ${formData.get("message")}` : "",
+    ].filter(Boolean).join("\n");
+
+    window.open(`${whatsappUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
@@ -277,7 +289,7 @@ export default function Home() {
           ))}
         </nav>
 
-        <a className="nav-cta" href="#contato">
+        <a className="nav-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
           Fale com um especialista <ArrowUpRight size={16} strokeWidth={1.8} />
         </a>
 
@@ -291,7 +303,7 @@ export default function Home() {
               <span>0{index + 1}</span>{label}
             </a>
           ))}
-          <a className="mobile-cta" href="#contato" onClick={() => setMenuOpen(false)}>Fale com um especialista <ArrowUpRight /></a>
+          <a className="mobile-cta" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fale com um especialista <ArrowUpRight /></a>
         </div>
       </header>
 
@@ -541,8 +553,8 @@ export default function Home() {
           {sent ? (
             <div className="success-card" role="status" data-reveal>
               <span><Check /></span>
-              <h3>Interesse registrado.</h3>
-              <p>Este protótipo demonstra a jornada de conversão. O envio será conectado ao canal comercial na etapa de integração.</p>
+              <h3>Conversa iniciada.</h3>
+              <p>Abrimos o WhatsApp com os dados preenchidos para você enviar a mensagem à equipe Assentin.</p>
               <button type="button" onClick={() => setSent(false)}>Voltar ao formulário</button>
             </div>
           ) : (
@@ -574,12 +586,12 @@ export default function Home() {
             <Image src="/brand/logo-transparent.png" alt="Assentin Consultoria Financeira" width={1200} height={337} />
             <p>A consultoria financeira para impulsionar o seu futuro.</p>
             <div className="footer-socials" aria-label="Redes sociais">
-              <span className="footer-social-icon" role="img" aria-label="Instagram" title="Instagram">
+              <a className="footer-social-icon" href="https://www.instagram.com/assentin.oficial/" target="_blank" rel="noreferrer" aria-label="Instagram da Assentin" title="Instagram">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle className="social-dot" cx="17.7" cy="6.5" r="1" /></svg>
-              </span>
-              <span className="footer-social-icon" role="img" aria-label="LinkedIn" title="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 9.25v9.25M5.5 5.5v.1M10 18.5v-9.25M10 13.25c.8-2.7 6.5-3.4 6.5 1.7v3.55" /></svg>
-              </span>
+              </a>
+              <a className="footer-social-icon" href="https://www.linkedin.com/company/assentin" target="_blank" rel="noreferrer" aria-label="LinkedIn da Assentin" title="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path className="social-fill" d="M5.15 8.35h3.18v10.2H5.15V8.35Zm1.6-4.95a1.84 1.84 0 1 1 0 3.68 1.84 1.84 0 0 1 0-3.68Zm3.57 4.95h3.05v1.4h.04c.43-.8 1.46-1.65 3.01-1.65 3.22 0 3.82 2.12 3.82 4.87v5.58h-3.18V13.6c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.61v5.04h-3.19V8.35Z" /></svg>
+              </a>
             </div>
           </div>
           <nav className="footer-column" aria-label="Explore">
@@ -596,9 +608,9 @@ export default function Home() {
           </nav>
           <address className="footer-column footer-contact">
             <span>Contato</span>
-            <a href="https://wa.me/5535997659085" target="_blank" rel="noreferrer">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
               <small>Telefone / WhatsApp</small>
-              <strong>(35) 99765-9085</strong>
+              <strong>(35) 9904-5269</strong>
             </a>
             <a href="mailto:contato@assentin.com.br">contato@assentin.com.br</a>
           </address>
