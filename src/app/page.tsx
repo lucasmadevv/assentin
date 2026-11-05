@@ -411,7 +411,7 @@ export default function Home() {
                 <a className="text-link dark-link" href="#contato">Conheça a solução <ArrowRight size={17} /></a>
               </div>
               <div className="solution-story-image">
-                <Image src="/images/assentin-personal-planning.png" alt="Pessoa organizando seu planejamento financeiro em casa" fill sizes="(max-width: 900px) 100vw, 50vw" />
+                <Image src="/images/authentic-personal-consulting.webp" alt="Consultores analisando um planejamento financeiro durante uma reunião" fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
             </article>
 
@@ -425,7 +425,7 @@ export default function Home() {
                 <a className="text-link dark-link" href="#contato">Conheça a solução <ArrowRight size={17} /></a>
               </div>
               <div className="solution-story-image">
-                <Image src="/images/assentin-technology.webp" alt="Notebook em ambiente profissional contemporâneo" fill sizes="(max-width: 900px) 100vw, 50vw" />
+                <Image src="/images/authentic-professional-advisory.webp" alt="Profissionais revisando documentos em uma conversa de consultoria" fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
             </article>
 
@@ -439,7 +439,7 @@ export default function Home() {
                 <a className="text-link dark-link" href="#contato">Conheça a solução <ArrowRight size={17} /></a>
               </div>
               <div className="solution-story-image">
-                <Image src="/images/assentin-boardroom.webp" alt="Sala de reunião com vista para a cidade ao entardecer" fill sizes="(max-width: 900px) 100vw, 50vw" />
+                <Image src="/images/authentic-business-team.webp" alt="Equipe reunida para analisar indicadores e documentos empresariais" fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
             </article>
           </div>
@@ -447,7 +447,7 @@ export default function Home() {
       </section>
 
       <section className="method section-dark" id="metodo">
-        <Image className="method-background" src="/images/assentin-boardroom.webp" alt="" fill sizes="100vw" aria-hidden="true" />
+        <Image className="method-background" src="/images/authentic-team-meeting.webp" alt="" fill sizes="100vw" aria-hidden="true" />
         <div className="method-overlay" aria-hidden="true" />
         <div className="page-shell method-layout">
           <div className="method-intro" data-reveal>
@@ -496,7 +496,7 @@ export default function Home() {
 
       <section className="results section-light" aria-labelledby="diferenciais-titulo">
         <div className="results-media" data-reveal>
-          <Image src="/images/assentin-personal-dusk.webp" alt="Caderno de planejamento em um ambiente com vista para a cidade" fill sizes="(max-width: 900px) 100vw, 58vw" />
+          <Image src="/images/authentic-personal-consulting.webp" alt="Reunião de consultoria com análise de dados financeiros" fill sizes="(max-width: 900px) 100vw, 58vw" />
           <div className="results-gradient" aria-hidden="true" />
         </div>
         <div className="page-shell why-grid">
