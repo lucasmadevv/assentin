@@ -621,7 +621,9 @@ export default function Home() {
             <span>CNPJ 60.719.330/0001-63</span>
           </div>
           <span className="footer-copyright">© 2026 Assentin. Todos os direitos reservados.</span>
-          <div className="footer-policies"><a href="#">Privacidade</a><i aria-hidden="true" /><a href="#">Termos de uso</a></div>
+          <div className="footer-policies" aria-label="Documentos legais">
+            <span>Privacidade</span><i aria-hidden="true" /><span>Termos de uso</span>
+          </div>
         </div>
       </footer>
     </main>
